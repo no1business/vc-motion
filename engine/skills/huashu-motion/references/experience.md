@@ -6,6 +6,105 @@ Entry format: `## date | situation`, then: finding, what to do, evidence, confid
 
 Older project-specific notes (3D city film, web-product promo) are kept by the maintainer and not shipped.
 
+
+# VentureCraft 공통 경험 (모든 고객 공통, 저장소 업데이트로 자동 반영)
+
+숏폼(1080×1920, 한국어) 검수에서 확인된 것. 이 고객 PC의 local 경험(고객별)과 함께 읽힌다. 충돌하면 고객 본인의 preference가 우선.
+
+## VC1 · 2026-10-09 · verified · topics: sound, voice, speed, shorts
+
+- Finding: 내레이션은 1.2배로 처리한 뒤 완성본을 1.1배. 1.15배 이상을 한 번에 올리면 입모양·발음이 어색해진다. 무음은 큰 끊김 0.2초, 작은 끊김 0.08초로 압축.
+- Do: 3D 위주 영상은 1.15배 + 1.1배. 내레이션 없는 인포그래픽만 있는 영상은 장면 리듬을 1.3배 빠르기에 맞춘다.
+- Evidence: founder 릴스 속도 조합 14개 비교, 대표 선택.
+
+## VC2 · 2026-10-09 · verified · topics: sound, ducking, music
+
+- Finding: 덕킹 ratio 6이면 BGM이 묻혀 사라진다. threshold 0.08 · ratio 2.5 · attack 30 · release 350, BGM은 목소리보다 7~8 LU 낮게.
+- Evidence: founder 릴스 대표 지적 "BGM이 묻힘".
+
+## VC3 · 2026-10-09 · verified · topics: hook, intro, rhythm, shorts
+
+- Finding: 훅 대사는 3초 이내(15~18음절), 첫 글자·첫 말은 0.7초 안. 인트로·CTA가 5초를 넘으면 길다는 지적.
+- Evidence: founder 릴스.
+
+## VC4 · 2026-10-10 · verified · topics: cta, copy, ads
+
+- Finding: "친구한테 공유하세요" 같은 명령형 공유 유도는 광고 반려 원인. 공유는 "이거 보면 생각나는 사장님 있으시죠"처럼 떠올리게 하는 묘사형을 앞쪽에.
+- Evidence: founder·복제 릴스 광고 거부.
+
+## VC5 · 2026-10-12 · verified · topics: craft, background, cards, typography, transitions
+
+- Finding: 단색 배경·평면 카드·단순 페이드로 만든 모션그래픽은 "퀄리티 떨어짐"으로 전면 재작업. 통과 기준: 거의 검정 배경에 한 색의 약한 빛 + 원근 그리드·보케(여러 색 그라데이션은 금지, VC18), 3D로 기울어진 카드의 탄성 등장, 글자 단위 키네틱 타이포, 줌 블러·라이트 릭·충격파 전환, 훅은 줌 펀치.
+- Evidence: hwp_v1 → hwp_v2 재작업.
+
+## VC6 · 2026-10-12 · verified · topics: planning, reference, topic
+
+- Finding: 기획만으로 만든 릴스는 조회가 부진. 터진 레퍼런스를 먼저 보고 구조(길이·흐름·반전 위치)를 맞춘 뒤 소재를 얹었을 때 터졌다(14.1만, 8,092, 7,929). 세 개 모두 "누군가는 내가 이걸 몰랐으면 한다"는 심리.
+- Evidence: hwp 조회 부진 → ilc(불법 코드) 14.1만.
+
+## VC7 · 2026-10-13 · verified · topics: topic, planning
+
+- Finding: 조회 245로 실패한 영상의 원인: 전날 소재와 겹침, 대상 불분명, 결과가 화면에 안 보임. 소재 3기준 = 국내에 덜 알려짐 + 결과가 보임 + 최근과 안 겹침.
+- Evidence: arena 릴스.
+
+## VC8 · 2026-10-14 · verified · topics: copy, numbers, facts
+
+- Finding: "전부 한 줄로" 같은 과장은 지적됨. 숫자는 사실인 것만 ("수백 개가 한두 줄"). 시간 주장 대신 "딸깍 한 번에".
+- Evidence: 703 릴스.
+
+## VC9 · 2026-10-18 · verified · topics: captions, korean
+
+- Finding: 자막 규격을 추측해서 작게·왼쪽 정렬·다른 색으로 만들었다가 지적됨. 표준: 위에서 1420px 가운데, Pretendard 900, 100px, 흰 글씨 + 검정 테두리 14px(paint-order: stroke fill), 강조 노랑 #FFC93C · 빨강 #FF4D5E, 1~2어절씩. 예전 124px / 1330px 규격은 폐기.
+- Evidence: skills_top5 릴스.
+
+## VC10 · 2026-10-19 · verified · topics: captions, hook, cta
+
+- Finding: 훅·CTA 구간에 자막이 없으면 지적됨. 모든 구간에 자막.
+- Evidence: cc_top5 v1.
+
+## VC11 · 2026-10-19 · verified · topics: mockup, ui, craft
+
+- Finding: 비교 장면의 목업 화면이 엉성하면 영상 전체가 싸 보인다. 목업은 실제 웹페이지 수준의 DOM UI로 새로 디자인(정해진 서체·색·여백), 캔버스 손그림 금지.
+- Evidence: cc_top5 v1 → v2 (빵집 페이지 재제작).
+
+## VC12 · 2026-10-21 · verified · topics: typography, background, variety
+
+- Finding: 얇은 폰트·밋밋한 배경 반려. Pretendard Black/ExtraBold만. 색만 바꾼 변형 5종은 불합격 — 변형은 배경·차트·글꼴 배치·카드 모양이 달라야 한다.
+- Evidence: ppt 릴스와 키트.
+
+## VC13 · 2026-10-21 · verified · topics: copy, hook
+
+- Finding: 어려운 용어(IR 덱 등)와 "외주비" 같은 임의 후킹은 반려. 후킹은 정해진 후킹 공식 21개에서만.
+- Evidence: ppt, huashu 릴스.
+
+## VC14 · 2026-10-22 · verified · topics: copy, hook
+
+- Finding: "당신"을 쓴 문구는 반려. 경고·손실형 후킹이 낫다. 누구나 아는 정보 소재는 제작 중단.
+- Evidence: 거짓말 방지 릴스.
+
+## VC15 · 2026-10-22 · verified · topics: sound, music, drop
+
+- Finding: 음악 드롭은 가장 센 장면(반전·결과)에 둬야 영상이 산다. 화슈모션 작곡(om-score)과 실제 악기 음원으로 만든 BGM이 합성 신스 BGM보다 확실히 낫다는 대표 평가.
+- Evidence: editor 릴스(huashu-motion), 대표 "확실히 화슈모션 쓰고나서 퀄리티도 더 올라간 것 같아".
+
+## VC16 · 2026-10-22 · verified · topics: footage, background, foreign
+
+- Finding: 자료 화면에 외국어가 보이면 어색하다. 배경으로만 깔 때 밝기 .38, 블러 2px로 어둡게. 검증 안 된 문구("한국엔 아직 거의 없음")는 쓰지 않는다.
+- Evidence: editor 릴스 자체 검수.
+
+## VC17 · 2026-10-15 · verified · topics: 3d
+
+- Finding: 3D 캐릭터 유무로 반응 차이는 크지 않았다. 3D는 문장 내용을 보여줄 때만(돈이 쌓임, 숫자가 튀어나옴), 아이콘만 떠 있는 3D는 밋밋. 3D가 화면 밖으로 잘리거나 방향이 뒤집힌 부품(손잡이·시계 등)이 자주 나오니 정지 프레임으로 꼭 확인.
+- Evidence: free600·nv100 릴스, 3D 부품 키트 검수(10/21, 8종 수정).
+
+## VC18 · 2026-10-22 · verified · topics: background, colour, gradient, craft
+
+- Said: "과한 그라데이션은 디자인 퀄리티가 떨어진다, 자제해야 한다" (대표)
+- Do: 배경은 거의 검정 + 한 색의 약한 빛 하나 + 그리드·질감. 여러 색 빛 덩어리, 장면마다 바뀌는 컬러 글로우, 오로라 그라데이션 금지. 화려함은 피사체 모션·카메라·전환으로.
+- Evidence: VentureCraft 범용 샘플 v1(파랑·보라·주황 글로우 블롭 배경) 정지 프레임 보고 대표 반려.
+
+# huashu-motion 원본 경험
+
 ## 2026-10-17 | Three traps met while rebuilding a launch film
 
 - `OM.beat()` needs the bpm, so `OM.music({ bpm, end: B(54) })` throws: the argument is evaluated before the call. Set the bpm in one call and anything computed from beats in a second `OM.music({ end })`.
