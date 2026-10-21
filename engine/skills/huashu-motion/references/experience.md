@@ -103,6 +103,12 @@ Older project-specific notes (3D city film, web-product promo) are kept by the m
 - Do: 배경은 거의 검정 + 한 색의 약한 빛 하나 + 그리드·질감. 여러 색 빛 덩어리, 장면마다 바뀌는 컬러 글로우, 오로라 그라데이션 금지. 화려함은 피사체 모션·카메라·전환으로.
 - Evidence: VentureCraft 범용 샘플 v1(파랑·보라·주황 글로우 블롭 배경) 정지 프레임 보고 대표 반려.
 
+## VC19 · 2026-10-22 · verified · topics: rhythm, sound, music, bpm, transitions, shorts
+
+- Finding: 103 BPM 펑크 + 장면 4~5초 + 0.45초 전환으로 만든 샘플을 대표가 "BGM이 너무 느리고 뚝뚝 끊기고, 화면전환도 느리고 지루하다"고 반려. "릴스는 흐름도 빨라야하고 bgm도 늘어지면 절대 안돼". 원인: 장면 컷이 박자 격자에 없어 장면마다 음악이 템포를 휘며(최대 106ms) 새로 시작, 장면 안에서 움직임이 멈춤(초당 움직임 0.3~0.5 구간 다수).
+- Do: 첫 줄에 `OM.music({ bpm: 120~130 })`, 모든 장면 시작·자막 전환을 `OM.beat(n)` 박자에 둔다(om sound 결과 'bends by up to 0 ms' 확인). 장면은 2~8박(1~4초), 전환 0.25~0.3초(줌 블러·휩·푸시 업 번갈아). 장면 내내 카메라가 계속 움직이고(push·tilt·drift), 핵심 요소는 박자마다 펀치(scale 1.05~1.1 → 1). 자막은 1~2박마다 교체. 본문 22~28초. 템포 느린 장르(lofi·piano·ambient)는 숏폼 본문에 쓰지 않는다. om qa에서 1초 이상 정지 구간이 나오면 고친다.
+- Evidence: 범용 샘플 v1(103 BPM funk, 31초) → v2(128 BPM pulse, 박자 격자, 26.7초).
+
 # huashu-motion 원본 경험
 
 ## 2026-10-17 | Three traps met while rebuilding a launch film
