@@ -109,6 +109,12 @@ Older project-specific notes (3D city film, web-product promo) are kept by the m
 - Do: 첫 줄에 `OM.music({ bpm: 120~130 })`, 모든 장면 시작·자막 전환을 `OM.beat(n)` 박자에 둔다(om sound 결과 'bends by up to 0 ms' 확인). 장면은 2~8박(1~4초), 전환 0.25~0.3초(줌 블러·휩·푸시 업 번갈아). 장면 내내 카메라가 계속 움직이고(push·tilt·drift), 핵심 요소는 박자마다 펀치(scale 1.05~1.1 → 1). 자막은 1~2박마다 교체. 본문 22~28초. 템포 느린 장르(lofi·piano·ambient)는 숏폼 본문에 쓰지 않는다. om qa에서 1초 이상 정지 구간이 나오면 고친다.
 - Evidence: 범용 샘플 v1(103 BPM funk, 31초) → v2(128 BPM pulse, 박자 격자, 26.7초).
 
+## VC20 · 2026-10-22 · verified · topics: 3d, camera, transitions, craft, shorts
+
+- Finding: 3D 없이 DOM 카드만, 카메라를 5~12%만 키운 샘플은 대표가 "3d 요소들도 한개도 안쓰고 화면 줌이나 이런것도 전혀 없고 단조롭다"고 반려.
+- Do: 영상마다 three.js 3D 장면 2개 이상(입체 숫자·물체·공간을 카메라가 통과), 큰 카메라 무빙 3번 이상(화면 속으로 돌진하는 줌 스루, 요소 주위를 도는 회전, 휩 팬), 같은 등장 방식을 연속 두 번 쓰지 않는다. DOM 장면도 카드에 rotationY 40° 이상 궤도 회전·깊이 차를 줘 평면처럼 보이지 않게. 3D 물체는 자막 띠(1300~1600px)와 화면 가장자리에 걸리지 않게 정지 프레임으로 확인(세로 화면은 가로 폭이 좁아 생각보다 쉽게 잘린다).
+- Evidence: 범용 샘플 v2 → v3(골드 3D 숫자, 댓글 3D 터널, 3D 버튼, 줌 스루 전환 2회).
+
 # huashu-motion 원본 경험
 
 ## 2026-10-17 | Three traps met while rebuilding a launch film
