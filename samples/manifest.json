@@ -1,0 +1,4576 @@
+{
+ "version": 2,
+ "built": "2026-10-21T15:26:39.612Z",
+ "instruments": {
+  "piano": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "piano/piano_22_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 34,
+     "cents": -13
+    },
+    {
+     "file": "piano/piano_22_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 34,
+     "cents": -12
+    },
+    {
+     "file": "piano/piano_22_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 34,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_24_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -12
+    },
+    {
+     "file": "piano/piano_24_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_24_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -10
+    },
+    {
+     "file": "piano/piano_26_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -8
+    },
+    {
+     "file": "piano/piano_26_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -8
+    },
+    {
+     "file": "piano/piano_26_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -28
+    },
+    {
+     "file": "piano/piano_28_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": -15
+    },
+    {
+     "file": "piano/piano_28_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": -14
+    },
+    {
+     "file": "piano/piano_28_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": -14
+    },
+    {
+     "file": "piano/piano_30_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 42,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_30_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 42,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_30_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 42,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_32_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 44,
+     "cents": -5
+    },
+    {
+     "file": "piano/piano_32_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 44,
+     "cents": -5
+    },
+    {
+     "file": "piano/piano_32_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 44,
+     "cents": -4
+    },
+    {
+     "file": "piano/piano_34_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 46,
+     "cents": -11
+    },
+    {
+     "file": "piano/piano_34_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 46,
+     "cents": -10
+    },
+    {
+     "file": "piano/piano_34_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 46,
+     "cents": -9
+    },
+    {
+     "file": "piano/piano_36_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_36_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_36_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": 4
+    },
+    {
+     "file": "piano/piano_38_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_38_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_38_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -1
+    },
+    {
+     "file": "piano/piano_40_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": -7
+    },
+    {
+     "file": "piano/piano_40_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": -7
+    },
+    {
+     "file": "piano/piano_40_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": -6
+    },
+    {
+     "file": "piano/piano_42_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 54,
+     "cents": -1
+    },
+    {
+     "file": "piano/piano_42_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 54,
+     "cents": -1
+    },
+    {
+     "file": "piano/piano_42_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 54,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_44_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 56,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_44_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 56,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_44_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 56,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_46_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 58,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_46_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 58,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_46_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 58,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_48_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_48_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_48_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_50_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -4
+    },
+    {
+     "file": "piano/piano_50_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -4
+    },
+    {
+     "file": "piano/piano_50_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_52_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_52_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_52_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_54_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": -4
+    },
+    {
+     "file": "piano/piano_54_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": -4
+    },
+    {
+     "file": "piano/piano_54_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_56_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 68,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_56_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 68,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_56_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 68,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_58_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 70,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_58_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 70,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_58_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 70,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_60_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -2
+    },
+    {
+     "file": "piano/piano_60_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_60_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -1
+    },
+    {
+     "file": "piano/piano_62_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_62_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": -3
+    },
+    {
+     "file": "piano/piano_62_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": -1
+    },
+    {
+     "file": "piano/piano_64_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_64_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_64_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_66_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 78,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_66_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 78,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_66_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 78,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_68_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 80,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_68_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 80,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_68_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 80,
+     "cents": 0
+    },
+    {
+     "file": "piano/piano_70_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 82,
+     "cents": 4
+    },
+    {
+     "file": "piano/piano_70_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 82,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_70_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 82,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_72_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_72_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_72_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 3
+    },
+    {
+     "file": "piano/piano_74_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 4
+    },
+    {
+     "file": "piano/piano_74_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_74_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_76_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_76_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_76_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 1
+    },
+    {
+     "file": "piano/piano_78_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 90,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_78_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 90,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_78_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 90,
+     "cents": 2
+    },
+    {
+     "file": "piano/piano_80_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 92,
+     "cents": 5
+    },
+    {
+     "file": "piano/piano_80_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 92,
+     "cents": 5
+    },
+    {
+     "file": "piano/piano_80_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 92,
+     "cents": 6
+    },
+    {
+     "file": "piano/piano_82_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 94,
+     "cents": 4
+    },
+    {
+     "file": "piano/piano_82_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 94,
+     "cents": 10
+    },
+    {
+     "file": "piano/piano_82_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 94,
+     "cents": 11
+    },
+    {
+     "file": "piano/piano_84_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_84_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 5
+    },
+    {
+     "file": "piano/piano_84_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 6
+    },
+    {
+     "file": "piano/piano_86_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 98,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_86_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 98,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_86_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 98,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_88_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 100,
+     "cents": 12
+    },
+    {
+     "file": "piano/piano_88_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 100,
+     "cents": 12
+    },
+    {
+     "file": "piano/piano_88_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 100,
+     "cents": 12
+    },
+    {
+     "file": "piano/piano_90_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 102,
+     "cents": 10
+    },
+    {
+     "file": "piano/piano_90_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 102,
+     "cents": 19
+    },
+    {
+     "file": "piano/piano_90_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 102,
+     "cents": 20
+    },
+    {
+     "file": "piano/piano_92_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 104,
+     "cents": 17
+    },
+    {
+     "file": "piano/piano_92_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 104,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_92_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 104,
+     "cents": 17
+    },
+    {
+     "file": "piano/piano_94_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 106,
+     "cents": 20
+    },
+    {
+     "file": "piano/piano_94_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 106,
+     "cents": 15
+    },
+    {
+     "file": "piano/piano_94_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 106,
+     "cents": 13
+    },
+    {
+     "file": "piano/piano_96_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 108,
+     "cents": 33
+    },
+    {
+     "file": "piano/piano_96_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 108,
+     "cents": 33
+    },
+    {
+     "file": "piano/piano_96_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 108,
+     "cents": 33
+    },
+    {
+     "file": "piano/piano_98_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 110,
+     "cents": 4
+    },
+    {
+     "file": "piano/piano_98_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 110,
+     "cents": 27
+    },
+    {
+     "file": "piano/piano_98_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 110,
+     "cents": 11
+    },
+    {
+     "file": "piano/piano_100_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 112,
+     "cents": -8
+    },
+    {
+     "file": "piano/piano_100_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 112,
+     "cents": 12
+    },
+    {
+     "file": "piano/piano_100_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 112,
+     "cents": 8
+    },
+    {
+     "file": "piano/piano_102_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 114,
+     "cents": 50
+    },
+    {
+     "file": "piano/piano_102_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 114,
+     "cents": 51
+    },
+    {
+     "file": "piano/piano_102_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 114,
+     "cents": 10
+    },
+    {
+     "file": "piano/piano_104_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 116,
+     "cents": 17
+    },
+    {
+     "file": "piano/piano_104_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 116,
+     "cents": 19
+    },
+    {
+     "file": "piano/piano_104_4.opus",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2,
+     "root": 116,
+     "cents": 1
+    }
+   ]
+  },
+  "violins": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "violins/violins_43_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": 1
+    },
+    {
+     "file": "violins/violins_43_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -2
+    },
+    {
+     "file": "violins/violins_45_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -1
+    },
+    {
+     "file": "violins/violins_45_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": 1
+    },
+    {
+     "file": "violins/violins_47_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_47_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 0
+    },
+    {
+     "file": "violins/violins_50_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": 3
+    },
+    {
+     "file": "violins/violins_50_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": 3
+    },
+    {
+     "file": "violins/violins_54_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_54_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": -4
+    },
+    {
+     "file": "violins/violins_57_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 3
+    },
+    {
+     "file": "violins/violins_57_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": -1
+    },
+    {
+     "file": "violins/violins_60_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 3
+    },
+    {
+     "file": "violins/violins_60_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_64_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_64_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 0
+    },
+    {
+     "file": "violins/violins_67_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 0
+    },
+    {
+     "file": "violins/violins_67_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 0
+    },
+    {
+     "file": "violins/violins_71_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_71_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": 2
+    },
+    {
+     "file": "violins/violins_74_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 3
+    },
+    {
+     "file": "violins/violins_74_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": -2
+    }
+   ]
+  },
+  "violas": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "violas/violas_36_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": 1
+    },
+    {
+     "file": "violas/violas_36_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": -3
+    },
+    {
+     "file": "violas/violas_38_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": 3
+    },
+    {
+     "file": "violas/violas_38_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -2
+    },
+    {
+     "file": "violas/violas_40_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": 1
+    },
+    {
+     "file": "violas/violas_40_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": 2
+    },
+    {
+     "file": "violas/violas_43_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -1
+    },
+    {
+     "file": "violas/violas_43_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -6
+    },
+    {
+     "file": "violas/violas_47_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 1
+    },
+    {
+     "file": "violas/violas_47_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 2
+    },
+    {
+     "file": "violas/violas_50_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": 0
+    },
+    {
+     "file": "violas/violas_50_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -4
+    },
+    {
+     "file": "violas/violas_53_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": -1
+    },
+    {
+     "file": "violas/violas_53_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": 3
+    },
+    {
+     "file": "violas/violas_57_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 0
+    },
+    {
+     "file": "violas/violas_57_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 3
+    },
+    {
+     "file": "violas/violas_60_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -1
+    },
+    {
+     "file": "violas/violas_60_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -2
+    },
+    {
+     "file": "violas/violas_64_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -1
+    },
+    {
+     "file": "violas/violas_64_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -3
+    },
+    {
+     "file": "violas/violas_67_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 1
+    },
+    {
+     "file": "violas/violas_67_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 0
+    },
+    {
+     "file": "violas/violas_71_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": 2
+    },
+    {
+     "file": "violas/violas_71_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": -2
+    },
+    {
+     "file": "violas/violas_74_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 6
+    },
+    {
+     "file": "violas/violas_74_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 1
+    }
+   ]
+  },
+  "celli": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "celli/celli_24_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": 3
+    },
+    {
+     "file": "celli/celli_24_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_28_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 0
+    },
+    {
+     "file": "celli/celli_28_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": -3
+    },
+    {
+     "file": "celli/celli_31_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": -5
+    },
+    {
+     "file": "celli/celli_31_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_35_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 47,
+     "cents": 3
+    },
+    {
+     "file": "celli/celli_35_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 47,
+     "cents": -1
+    },
+    {
+     "file": "celli/celli_38_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": 5
+    },
+    {
+     "file": "celli/celli_38_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": 1
+    },
+    {
+     "file": "celli/celli_41_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": 3
+    },
+    {
+     "file": "celli/celli_41_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": 2
+    },
+    {
+     "file": "celli/celli_45_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_45_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -4
+    },
+    {
+     "file": "celli/celli_48_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 5
+    },
+    {
+     "file": "celli/celli_48_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_52_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_52_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -2
+    },
+    {
+     "file": "celli/celli_55_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": 6
+    },
+    {
+     "file": "celli/celli_55_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": -3
+    },
+    {
+     "file": "celli/celli_59_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 71,
+     "cents": 1
+    },
+    {
+     "file": "celli/celli_59_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 71,
+     "cents": 3
+    },
+    {
+     "file": "celli/celli_62_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": -1
+    },
+    {
+     "file": "celli/celli_62_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": -1
+    },
+    {
+     "file": "celli/celli_65_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": 2
+    },
+    {
+     "file": "celli/celli_65_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": -4
+    }
+   ]
+  },
+  "basses": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "basses/basses_18_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 30,
+     "cents": -4
+    },
+    {
+     "file": "basses/basses_18_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 30,
+     "cents": 0
+    },
+    {
+     "file": "basses/basses_19_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 31,
+     "cents": -20
+    },
+    {
+     "file": "basses/basses_19_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 31,
+     "cents": -2
+    },
+    {
+     "file": "basses/basses_22_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 34,
+     "cents": -5
+    },
+    {
+     "file": "basses/basses_22_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 34,
+     "cents": -4
+    },
+    {
+     "file": "basses/basses_24_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": 1
+    },
+    {
+     "file": "basses/basses_24_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -1
+    },
+    {
+     "file": "basses/basses_26_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -3
+    },
+    {
+     "file": "basses/basses_26_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -5
+    },
+    {
+     "file": "basses/basses_28_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": -1
+    },
+    {
+     "file": "basses/basses_28_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 0
+    },
+    {
+     "file": "basses/basses_30_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 42,
+     "cents": -6
+    },
+    {
+     "file": "basses/basses_30_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 42,
+     "cents": -2
+    },
+    {
+     "file": "basses/basses_32_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 44,
+     "cents": -5
+    },
+    {
+     "file": "basses/basses_32_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 44,
+     "cents": -3
+    },
+    {
+     "file": "basses/basses_33_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 45,
+     "cents": -1
+    },
+    {
+     "file": "basses/basses_33_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 45,
+     "cents": 1
+    },
+    {
+     "file": "basses/basses_37_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 49,
+     "cents": -1
+    },
+    {
+     "file": "basses/basses_37_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 49,
+     "cents": 1
+    },
+    {
+     "file": "basses/basses_40_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": 0
+    },
+    {
+     "file": "basses/basses_40_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": 2
+    },
+    {
+     "file": "basses/basses_44_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 56,
+     "cents": 1
+    },
+    {
+     "file": "basses/basses_44_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 56,
+     "cents": -7
+    },
+    {
+     "file": "basses/basses_47_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 3
+    },
+    {
+     "file": "basses/basses_47_3.opus",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": -5
+    }
+   ]
+  },
+  "violin": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "violin/violin_55_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -1
+    },
+    {
+     "file": "violin/violin_55_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -3
+    },
+    {
+     "file": "violin/violin_57_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": 3
+    },
+    {
+     "file": "violin/violin_57_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": 4
+    },
+    {
+     "file": "violin/violin_60_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -2
+    },
+    {
+     "file": "violin/violin_60_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 24
+    },
+    {
+     "file": "violin/violin_64_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": 4
+    },
+    {
+     "file": "violin/violin_64_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": 5
+    },
+    {
+     "file": "violin/violin_67_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": 1
+    },
+    {
+     "file": "violin/violin_67_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": -2
+    },
+    {
+     "file": "violin/violin_69_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 11
+    },
+    {
+     "file": "violin/violin_69_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 5
+    },
+    {
+     "file": "violin/violin_72_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -1
+    },
+    {
+     "file": "violin/violin_72_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -1
+    },
+    {
+     "file": "violin/violin_76_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 17
+    },
+    {
+     "file": "violin/violin_76_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 8
+    },
+    {
+     "file": "violin/violin_79_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 7
+    },
+    {
+     "file": "violin/violin_79_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 6
+    },
+    {
+     "file": "violin/violin_81_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": 4
+    },
+    {
+     "file": "violin/violin_81_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": -5
+    },
+    {
+     "file": "violin/violin_84_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 0
+    },
+    {
+     "file": "violin/violin_84_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 0
+    },
+    {
+     "file": "violin/violin_88_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 10
+    },
+    {
+     "file": "violin/violin_88_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 2
+    },
+    {
+     "file": "violin/violin_91_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 91,
+     "cents": 2
+    },
+    {
+     "file": "violin/violin_91_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 91,
+     "cents": 3
+    },
+    {
+     "file": "violin/violin_93_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 93,
+     "cents": 7
+    },
+    {
+     "file": "violin/violin_93_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 93,
+     "cents": -2
+    },
+    {
+     "file": "violin/violin_96_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": -27
+    },
+    {
+     "file": "violin/violin_96_p.opus",
+     "layer": "p",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 11
+    }
+   ]
+  },
+  "trem": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "trem/trem_24_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -3
+    },
+    {
+     "file": "trem/trem_28_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 9
+    },
+    {
+     "file": "trem/trem_28_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 2
+    },
+    {
+     "file": "trem/trem_31_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": -5
+    },
+    {
+     "file": "trem/trem_31_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": 0
+    },
+    {
+     "file": "trem/trem_35_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 47,
+     "cents": 3
+    },
+    {
+     "file": "trem/trem_38_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -27
+    },
+    {
+     "file": "trem/trem_38_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": 2
+    },
+    {
+     "file": "trem/trem_41_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_41_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_45_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -2
+    },
+    {
+     "file": "trem/trem_45_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_47_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 44
+    },
+    {
+     "file": "trem/trem_50_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -12
+    },
+    {
+     "file": "trem/trem_50_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": 0
+    },
+    {
+     "file": "trem/trem_53_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_53_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": 2
+    },
+    {
+     "file": "trem/trem_57_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 2
+    },
+    {
+     "file": "trem/trem_57_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 3
+    },
+    {
+     "file": "trem/trem_60_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -4
+    },
+    {
+     "file": "trem/trem_60_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 1
+    },
+    {
+     "file": "trem/trem_64_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 7
+    },
+    {
+     "file": "trem/trem_64_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_67_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 3
+    },
+    {
+     "file": "trem/trem_67_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 1
+    },
+    {
+     "file": "trem/trem_71_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_71_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": -1
+    },
+    {
+     "file": "trem/trem_74_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": 5
+    },
+    {
+     "file": "trem/trem_74_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": -1
+    }
+   ]
+  },
+  "pizz": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pizz/pizz_24_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -13
+    },
+    {
+     "file": "pizz/pizz_28_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 2
+    },
+    {
+     "file": "pizz/pizz_31_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": -3
+    },
+    {
+     "file": "pizz/pizz_35_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 47,
+     "cents": -12
+    },
+    {
+     "file": "pizz/pizz_38_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -15
+    },
+    {
+     "file": "pizz/pizz_41_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": 0
+    },
+    {
+     "file": "pizz/pizz_45_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -4
+    },
+    {
+     "file": "pizz/pizz_48_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 9
+    },
+    {
+     "file": "pizz/pizz_52_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -9
+    },
+    {
+     "file": "pizz/pizz_57_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": -4
+    },
+    {
+     "file": "pizz/pizz_60_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 1
+    },
+    {
+     "file": "pizz/pizz_64_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -6
+    },
+    {
+     "file": "pizz/pizz_67_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 6
+    },
+    {
+     "file": "pizz/pizz_71_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": 0
+    },
+    {
+     "file": "pizz/pizz_74_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": -7
+    }
+   ]
+  },
+  "spic": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "spic/spic_24_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": 14
+    },
+    {
+     "file": "spic/spic_28_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 40,
+     "cents": 10
+    },
+    {
+     "file": "spic/spic_31_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": 0
+    },
+    {
+     "file": "spic/spic_35_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 47,
+     "cents": 4
+    },
+    {
+     "file": "spic/spic_38_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": 7
+    },
+    {
+     "file": "spic/spic_41_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": -1
+    },
+    {
+     "file": "spic/spic_45_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": 4
+    },
+    {
+     "file": "spic/spic_48_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 10
+    },
+    {
+     "file": "spic/spic_52_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": 3
+    },
+    {
+     "file": "spic/spic_57_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": -1
+    },
+    {
+     "file": "spic/spic_60_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -7
+    },
+    {
+     "file": "spic/spic_64_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -7
+    },
+    {
+     "file": "spic/spic_67_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": -1
+    },
+    {
+     "file": "spic/spic_71_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": -1
+    },
+    {
+     "file": "spic/spic_74_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": -3
+    }
+   ]
+  },
+  "harp": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "harp/harp_28_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 28,
+     "cents": -11
+    },
+    {
+     "file": "harp/harp_31_mp.opus",
+     "layer": "mp",
+     "rr": "1",
+     "ch": 2,
+     "root": 31,
+     "cents": -22
+    },
+    {
+     "file": "harp/harp_35_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 35,
+     "cents": -14
+    },
+    {
+     "file": "harp/harp_38_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 38,
+     "cents": -7
+    },
+    {
+     "file": "harp/harp_41_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 41,
+     "cents": -6
+    },
+    {
+     "file": "harp/harp_45_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 45,
+     "cents": -1
+    },
+    {
+     "file": "harp/harp_48_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": -3
+    },
+    {
+     "file": "harp/harp_52_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 52,
+     "cents": -2
+    },
+    {
+     "file": "harp/harp_55_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": -5
+    },
+    {
+     "file": "harp/harp_59_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": -11
+    },
+    {
+     "file": "harp/harp_62_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -11
+    },
+    {
+     "file": "harp/harp_65_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": 0
+    },
+    {
+     "file": "harp/harp_69_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": -10
+    },
+    {
+     "file": "harp/harp_72_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -9
+    },
+    {
+     "file": "harp/harp_76_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": -11
+    },
+    {
+     "file": "harp/harp_79_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": -6
+    },
+    {
+     "file": "harp/harp_83_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": -5
+    },
+    {
+     "file": "harp/harp_86_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 86,
+     "cents": -6
+    },
+    {
+     "file": "harp/harp_89_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 89,
+     "cents": -5
+    },
+    {
+     "file": "harp/harp_93_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 93,
+     "cents": -15
+    },
+    {
+     "file": "harp/harp_95_mf.opus",
+     "layer": "mf",
+     "rr": "1",
+     "ch": 2,
+     "root": 95,
+     "cents": -1
+    },
+    {
+     "file": "harp/harp_98_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 98,
+     "cents": -8
+    },
+    {
+     "file": "harp/harp_101_f.opus",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2,
+     "root": 101,
+     "cents": -30
+    }
+   ]
+  },
+  "glock": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "glock/glock_67_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": 8
+    },
+    {
+     "file": "glock/glock_72_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 12
+    },
+    {
+     "file": "glock/glock_79_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 91,
+     "cents": 12
+    },
+    {
+     "file": "glock/glock_84_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 15
+    },
+    {
+     "file": "glock/glock_91_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 103,
+     "cents": 16
+    },
+    {
+     "file": "glock/glock_96_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 108,
+     "cents": 24
+    }
+   ]
+  },
+  "marimba": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "marimba/marimba_29_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 41,
+     "cents": 19
+    },
+    {
+     "file": "marimba/marimba_36_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 48,
+     "cents": 13
+    },
+    {
+     "file": "marimba/marimba_43_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 55,
+     "cents": 13
+    },
+    {
+     "file": "marimba/marimba_47_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 59,
+     "cents": 2
+    },
+    {
+     "file": "marimba/marimba_53_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": 1
+    },
+    {
+     "file": "marimba/marimba_60_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 9
+    },
+    {
+     "file": "marimba/marimba_67_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": -3
+    },
+    {
+     "file": "marimba/marimba_71_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 83,
+     "cents": 1
+    },
+    {
+     "file": "marimba/marimba_77_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 89,
+     "cents": -1
+    },
+    {
+     "file": "marimba/marimba_84_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 10
+    }
+   ]
+  },
+  "vibes": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "vibes/vibes_41_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": -3
+    },
+    {
+     "file": "vibes/vibes_41_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": 1
+    },
+    {
+     "file": "vibes/vibes_45_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -18
+    },
+    {
+     "file": "vibes/vibes_45_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_48_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 1
+    },
+    {
+     "file": "vibes/vibes_48_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -1
+    },
+    {
+     "file": "vibes/vibes_52_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -1
+    },
+    {
+     "file": "vibes/vibes_52_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -1
+    },
+    {
+     "file": "vibes/vibes_55_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_55_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_59_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 71,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_59_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 71,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_62_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_62_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_65_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_65_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_69_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_69_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_72_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 1
+    },
+    {
+     "file": "vibes/vibes_72_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 0
+    },
+    {
+     "file": "vibes/vibes_76_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 1
+    },
+    {
+     "file": "vibes/vibes_76_2.opus",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 1
+    }
+   ]
+  },
+  "flute": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "flute/flute_48_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 3
+    },
+    {
+     "file": "flute/flute_52_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": -1
+    },
+    {
+     "file": "flute/flute_57_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": -2
+    },
+    {
+     "file": "flute/flute_60_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": 0
+    },
+    {
+     "file": "flute/flute_64_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 1
+    },
+    {
+     "file": "flute/flute_69_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": 0
+    },
+    {
+     "file": "flute/flute_72_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 84,
+     "cents": 1
+    },
+    {
+     "file": "flute/flute_76_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 88,
+     "cents": 3
+    },
+    {
+     "file": "flute/flute_81_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 93,
+     "cents": 4
+    },
+    {
+     "file": "flute/flute_84_1.opus",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2,
+     "root": 96,
+     "cents": 9
+    }
+   ]
+  },
+  "horn": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "horn/horn_24_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 36,
+     "cents": -11
+    },
+    {
+     "file": "horn/horn_27_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 39,
+     "cents": -10
+    },
+    {
+     "file": "horn/horn_31_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 43,
+     "cents": 4
+    },
+    {
+     "file": "horn/horn_34_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 46,
+     "cents": -12
+    },
+    {
+     "file": "horn/horn_38_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -10
+    },
+    {
+     "file": "horn/horn_41_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": -12
+    },
+    {
+     "file": "horn/horn_45_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -4
+    },
+    {
+     "file": "horn/horn_48_2.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": -7
+    }
+   ]
+  },
+  "hornstac": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios / Sam Gossner — VSCO 2 Community Edition"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "hornstac/hornstac_34_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 46,
+     "cents": 1
+    },
+    {
+     "file": "hornstac/hornstac_38_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 50,
+     "cents": -7
+    },
+    {
+     "file": "hornstac/hornstac_41_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 53,
+     "cents": 0
+    },
+    {
+     "file": "hornstac/hornstac_45_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 57,
+     "cents": -3
+    },
+    {
+     "file": "hornstac/hornstac_48_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 60,
+     "cents": 2
+    },
+    {
+     "file": "hornstac/hornstac_62_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": 3
+    },
+    {
+     "file": "hornstac/hornstac_65_3.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": 1
+    }
+   ]
+  },
+  "dantranh": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": false,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "dantranh/dantranh_35_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 47,
+     "cents": -1
+    },
+    {
+     "file": "dantranh/dantranh_37_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 49,
+     "cents": 39
+    },
+    {
+     "file": "dantranh/dantranh_39_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 51,
+     "cents": 2
+    },
+    {
+     "file": "dantranh/dantranh_42_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 54,
+     "cents": 35
+    },
+    {
+     "file": "dantranh/dantranh_44_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 56,
+     "cents": 40
+    },
+    {
+     "file": "dantranh/dantranh_47_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 59,
+     "cents": 44
+    },
+    {
+     "file": "dantranh/dantranh_49_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 61,
+     "cents": 42
+    },
+    {
+     "file": "dantranh/dantranh_51_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 63,
+     "cents": 35
+    },
+    {
+     "file": "dantranh/dantranh_54_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 66,
+     "cents": 12
+    },
+    {
+     "file": "dantranh/dantranh_56_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 68,
+     "cents": 4
+    },
+    {
+     "file": "dantranh/dantranh_59_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 71,
+     "cents": 18
+    },
+    {
+     "file": "dantranh/dantranh_61_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 73,
+     "cents": 7
+    },
+    {
+     "file": "dantranh/dantranh_63_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 75,
+     "cents": 12
+    },
+    {
+     "file": "dantranh/dantranh_66_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 78,
+     "cents": -2
+    },
+    {
+     "file": "dantranh/dantranh_68_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 80,
+     "cents": 2
+    },
+    {
+     "file": "dantranh/dantranh_71_f.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 1,
+     "root": 83,
+     "cents": -6
+    }
+   ]
+  },
+  "erhu": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — aliexpress erhu"
+   ],
+   "drum": false,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "erhu/erhu_74_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 62,
+     "cents": -26
+    },
+    {
+     "file": "erhu/erhu_75_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 63,
+     "cents": -3
+    },
+    {
+     "file": "erhu/erhu_76_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 64,
+     "cents": 7
+    },
+    {
+     "file": "erhu/erhu_77_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 65,
+     "cents": 12
+    },
+    {
+     "file": "erhu/erhu_78_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 66,
+     "cents": -3
+    },
+    {
+     "file": "erhu/erhu_79_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 67,
+     "cents": 1
+    },
+    {
+     "file": "erhu/erhu_80_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 68,
+     "cents": 2
+    },
+    {
+     "file": "erhu/erhu_81_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 69,
+     "cents": 4
+    },
+    {
+     "file": "erhu/erhu_82_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 70,
+     "cents": 2
+    },
+    {
+     "file": "erhu/erhu_83_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 71,
+     "cents": 4
+    },
+    {
+     "file": "erhu/erhu_84_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 72,
+     "cents": -11
+    },
+    {
+     "file": "erhu/erhu_85_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 73,
+     "cents": -14
+    },
+    {
+     "file": "erhu/erhu_86_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 74,
+     "cents": 11
+    },
+    {
+     "file": "erhu/erhu_87_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 75,
+     "cents": -2
+    },
+    {
+     "file": "erhu/erhu_88_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 76,
+     "cents": 1
+    },
+    {
+     "file": "erhu/erhu_89_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 77,
+     "cents": 12
+    },
+    {
+     "file": "erhu/erhu_90_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 78,
+     "cents": -14
+    },
+    {
+     "file": "erhu/erhu_91_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 79,
+     "cents": -19
+    },
+    {
+     "file": "erhu/erhu_92_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 80,
+     "cents": -1
+    },
+    {
+     "file": "erhu/erhu_93_x.opus",
+     "layer": "x",
+     "rr": "1",
+     "ch": 2,
+     "root": 81,
+     "cents": 18
+    }
+   ]
+  },
+  "ebass": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Finger Bass YR (Andrea Biasior)"
+   ],
+   "drum": false,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ebass/ebass_4_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 28,
+     "cents": 2
+    },
+    {
+     "file": "ebass/ebass_5_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 29,
+     "cents": 8
+    },
+    {
+     "file": "ebass/ebass_6_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 30,
+     "cents": 23
+    },
+    {
+     "file": "ebass/ebass_7_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 31,
+     "cents": 11
+    },
+    {
+     "file": "ebass/ebass_8_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 32,
+     "cents": 9
+    },
+    {
+     "file": "ebass/ebass_9_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 33,
+     "cents": 3
+    },
+    {
+     "file": "ebass/ebass_10_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 34,
+     "cents": 13
+    },
+    {
+     "file": "ebass/ebass_11_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 35,
+     "cents": 8
+    },
+    {
+     "file": "ebass/ebass_0_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 36,
+     "cents": 1
+    },
+    {
+     "file": "ebass/ebass_1_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 37,
+     "cents": -1
+    },
+    {
+     "file": "ebass/ebass_2_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 38,
+     "cents": -1
+    },
+    {
+     "file": "ebass/ebass_3_x.flac",
+     "layer": "x",
+     "rr": "1",
+     "ch": 1,
+     "root": 39,
+     "cents": -1
+    }
+   ]
+  },
+  "kick": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "kick/kick_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "kick/kick_5_2.flac",
+     "layer": "5",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "kick/kick_7_1.flac",
+     "layer": "7",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "kick/kick_7_2.flac",
+     "layer": "7",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "snare": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "snare/snare_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "snare/snare_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "snare/snare_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "snare/snare_5_2.flac",
+     "layer": "5",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "hat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "hat/hat_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "hat/hat_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "hat/hat_4_1.flac",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "hat/hat_4_2.flac",
+     "layer": "4",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "ohat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "ohat/ohat_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "ohat/ohat_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    }
+   ]
+  },
+  "tom": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "tom/tom_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "tom/tom_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "tom/tom_4_1.flac",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "tom/tom_4_2.flac",
+     "layer": "4",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "crash": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "crash/crash_f_1.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "crash/crash_fff_1.flac",
+     "layer": "fff",
+     "rr": "1",
+     "ch": 2
+    }
+   ]
+  },
+  "clap": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "clap/clap_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "clap/clap_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "clap/clap_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "clap/clap_4_1.flac",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "clap/clap_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "clap/clap_6_1.flac",
+     "layer": "6",
+     "rr": "1",
+     "ch": 2
+    }
+   ]
+  },
+  "woodblock": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "woodblock/woodblock_f_1.flac",
+     "layer": "f",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "woodblock/woodblock_f_2.flac",
+     "layer": "f",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "shaker": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "shaker/shaker_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "shaker/shaker_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    }
+   ]
+  },
+  "tamb": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Versilian Studios — Versilian Community Sample Library"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "tamb/tamb_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "tamb/tamb_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    }
+   ]
+  },
+  "snap": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — body percussion"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "snap/snap_r_1.flac",
+     "layer": "r",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_1.flac",
+     "layer": "r",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_2.flac",
+     "layer": "r",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_2.flac",
+     "layer": "r",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_3.flac",
+     "layer": "r",
+     "rr": "3",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_3.flac",
+     "layer": "r",
+     "rr": "3",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_4.flac",
+     "layer": "r",
+     "rr": "4",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_4.flac",
+     "layer": "r",
+     "rr": "4",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_5.flac",
+     "layer": "r",
+     "rr": "5",
+     "ch": 2
+    },
+    {
+     "file": "snap/snap_r_6.flac",
+     "layer": "r",
+     "rr": "6",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_kick": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_kick/pk_kick_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_kick/pk_kick_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_kick/pk_kick_7_1.flac",
+     "layer": "7",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_kick/pk_kick_7_2.flac",
+     "layer": "7",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_snare": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_snare/pk_snare_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_snare/pk_snare_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_snare/pk_snare_7_1.flac",
+     "layer": "7",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_snare/pk_snare_7_2.flac",
+     "layer": "7",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_rim": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_rim/pk_rim_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_rim/pk_rim_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_rim/pk_rim_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_rim/pk_rim_5_2.flac",
+     "layer": "5",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_rimshot": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_rimshot/pk_rimshot_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_rimshot/pk_rimshot_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_rimshot/pk_rimshot_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_rimshot/pk_rimshot_5_2.flac",
+     "layer": "5",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_hat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_hat/pk_hat_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_hat/pk_hat_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_hat/pk_hat_6_1.flac",
+     "layer": "6",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_hat/pk_hat_6_2.flac",
+     "layer": "6",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_phat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_phat/pk_phat_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_phat/pk_phat_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_ohat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_ohat/pk_ohat_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_ohat/pk_ohat_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_ohat/pk_ohat_6_1.flac",
+     "layer": "6",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_ohat/pk_ohat_6_2.flac",
+     "layer": "6",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_crash": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_crash/pk_crash_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_crash/pk_crash_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_crash/pk_crash_4_1.flac",
+     "layer": "4",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_crash/pk_crash_4_2.flac",
+     "layer": "4",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_ride": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Unruly Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_ride/pk_ride_3_1.flac",
+     "layer": "3",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_ride/pk_ride_3_2.flac",
+     "layer": "3",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_ride/pk_ride_6_1.flac",
+     "layer": "6",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_ride/pk_ride_6_2.flac",
+     "layer": "6",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "pk_tom": {
+   "license": "CC0-1.0",
+   "credit": [
+    "Karoryfer Samples — Big Rusty Drums"
+   ],
+   "drum": true,
+   "channels": 2,
+   "samples": [
+    {
+     "file": "pk_tom/pk_tom_2_1.flac",
+     "layer": "2",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_tom/pk_tom_2_2.flac",
+     "layer": "2",
+     "rr": "2",
+     "ch": 2
+    },
+    {
+     "file": "pk_tom/pk_tom_5_1.flac",
+     "layer": "5",
+     "rr": "1",
+     "ch": 2
+    },
+    {
+     "file": "pk_tom/pk_tom_5_2.flac",
+     "layer": "5",
+     "rr": "2",
+     "ch": 2
+    }
+   ]
+  },
+  "ek_kick": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Synthesizer Percussion (Roberto, zenvoid.org)"
+   ],
+   "drum": true,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ek_kick/ek_kick_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 1
+    },
+    {
+     "file": "ek_kick/ek_kick_1_2.flac",
+     "layer": "1",
+     "rr": "2",
+     "ch": 1
+    }
+   ]
+  },
+  "ek_snare": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Synthesizer Percussion (Roberto, zenvoid.org)"
+   ],
+   "drum": true,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ek_snare/ek_snare_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 1
+    },
+    {
+     "file": "ek_snare/ek_snare_1_2.flac",
+     "layer": "1",
+     "rr": "2",
+     "ch": 1
+    }
+   ]
+  },
+  "ek_hat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Synthesizer Percussion (Roberto, zenvoid.org)"
+   ],
+   "drum": true,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ek_hat/ek_hat_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 1
+    },
+    {
+     "file": "ek_hat/ek_hat_1_2.flac",
+     "layer": "1",
+     "rr": "2",
+     "ch": 1
+    }
+   ]
+  },
+  "ek_clap": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Synthesizer Percussion (Roberto, zenvoid.org)"
+   ],
+   "drum": true,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ek_clap/ek_clap_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 1
+    }
+   ]
+  },
+  "ek_ohat": {
+   "license": "CC0-1.0",
+   "credit": [
+    "FreePats — Synthesizer Percussion (Roberto, zenvoid.org)"
+   ],
+   "drum": true,
+   "channels": 1,
+   "samples": [
+    {
+     "file": "ek_ohat/ek_ohat_1_1.flac",
+     "layer": "1",
+     "rr": "1",
+     "ch": 1
+    }
+   ]
+  }
+ }
+}
