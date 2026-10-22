@@ -82,8 +82,54 @@
       tl.fromTo(p, { opacity: 1, x: 0, y: 0, rotation: 0 }, { x: Math.cos(a) * d, y: Math.sin(a) * d + 120, rotation: rnd() * 400, opacity: 0, duration: .8 + rnd() * .4, ease: 'power3.out' }, at); } }
   const S0 = (sc) => sc.t0;
 
+  /* ---------- typo mode (no narration): the big headline carries the sentence ---------- */
+  const TYPO = S.mode === 'typo';
+  let headBox = null;
+  if (TYPO) { film.classList.add('typo'); caps.style.display = 'none'; headBox = add(film, '<div id="headline" class="abs" style="left:60px;right:60px;top:230px;height:330px;z-index:6"></div>'); }
+  let lastHead = null;
+  function headline(sc) { const list = Array.isArray(sc.caps[0]) ? sc.caps : sc.caps.map((c, i, a) => [sc.dur * i / a.length, c]);
+    list.forEach(([rt, text], i) => { const at = sc.t0 + rt + .02;
+      const MK = { '*': 'y', '!': 'r', '_': 'g' }; let open = null;
+      const words = text.split(' ').map((w) => { let out = '', cls = open; for (const ch of w) { if (MK[ch]) { open = open ? null : MK[ch]; continue; } out += `<span${open ? ` class="${open}"` : ''}>${esc(ch)}</span>`; }
+        return `<span class="ln" style="display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em"><span style="display:inline-block">${out}</span></span>`; }).join(' ');
+      const el = add(headBox, `<div class="cap" style="position:absolute;left:0;right:0;top:0;font-size:${text.length > 12 ? 104 : 124}px;line-height:1.14;white-space:normal;-webkit-text-stroke:0;text-shadow:0 6px 30px rgba(0,0,0,.6)">${words}</div>`);
+      gsap.set(el, { opacity: 0 }); tl.set(el, { opacity: 1 }, at);
+      $$('.ln > span', el).forEach((w, k) => tl.fromTo(w, { yPercent: 115, rotation: 6 }, { yPercent: 0, rotation: 0, duration: .32, ease: 'expo.out' }, at + k * .06));
+      if (/[*!_]/.test(text)) { const hot = $$('.y,.r,.g', el); tl.fromTo(hot, { scale: 1.25 }, { scale: 1, duration: .3, ease: 'back.out(3)', transformOrigin: '50% 60%' }, at + .18); }
+      if (lastHead) tl.to(lastHead, { y: -90, opacity: 0, filter: 'blur(10px)', duration: .16, ease: 'power2.in' }, at - .02);
+      lastHead = el; }); }
+
+  /* ---------- frames (typo mode): one concept chrome kept for the whole film ---------- */
+  function frame(kind) { if (!kind || kind === 'none') return; const F = add(film, '<div class="abs" style="inset:0;z-index:5;pointer-events:none"></div>');
+    const mono = 'font-family:JBM,Pretendard,monospace;';
+    const total = S.scenes.length; const counter = (x, y, fmt, size = 26, color = '#8C93A6') => { const c = add(F, `<div class="abs" style="${mono}left:${x}px;top:${y}px;font-size:${size}px;color:${color}"></div>`);
+      S.scenes.forEach((sc, i) => tl.set(c, { textContent: fmt(i, sc) }, sc.t0)); return c; };
+    if (kind === 'receipt') {
+      add(F, `<div class="abs" style="left:0;right:0;top:0;height:22px;background:radial-gradient(circle at 18px -4px, transparent 14px, #F7F6F2 15px) 0 0/36px 22px repeat-x;opacity:.9"></div>`);
+      add(F, `<div class="abs" style="${mono}left:70px;top:110px;font-size:26px;color:#C9CEDB;letter-spacing:.12em">${esc((brand && brand.text) || '')} · AUTO-ORDER</div>`);
+      counter(760, 110, (i) => 'No.' + String(i + 1).padStart(4, '0'), 26, '#C9CEDB');
+      add(F, `<div class="abs" style="left:70px;right:70px;top:1700px;border-top:3px dashed rgba(255,255,255,.25)"></div>`);
+      counter(70, 1730, (i) => `처리 ${i + 1}/${total} ✓`, 34, 'var(--acc)');
+      const bc = add(F, `<div class="abs" style="left:640px;top:1730px;width:370px;height:56px;background:repeating-linear-gradient(90deg,#E8EAF0 0 4px,transparent 4px 7px,#E8EAF0 7px 9px,transparent 9px 14px)"></div>`);
+      tl.fromTo(bc, { backgroundPositionX: '0px' }, { backgroundPositionX: '-140px', duration: END, ease: 'none' }, 0); }
+    else if (kind === 'magazine') {
+      add(F, `<div class="abs" style="left:70px;right:70px;top:150px;border-top:3px solid #fff"></div><div class="abs" style="left:70px;right:70px;top:162px;border-top:1px solid rgba(255,255,255,.5)"></div>`);
+      add(F, `<div class="abs" style="left:70px;top:96px;font-size:34px;font-weight:900;letter-spacing:-.01em">${esc((brand && brand.text) || '')} <span style="color:var(--acc)">WEEKLY</span></div>`);
+      counter(800, 104, () => 'ISSUE 07', 26, '#C9CEDB');
+      add(F, `<div class="abs" style="left:70px;right:70px;top:1740px;border-top:1px solid rgba(255,255,255,.4)"></div>`);
+      counter(70, 1760, (i, sc) => (sc.section || '') , 28, '#C9CEDB'); counter(880, 1756, (i) => `${String(i + 1).padStart(2, '0')} / ${String(total).padStart(2, '0')}`, 32, 'var(--acc)'); }
+    else if (kind === 'terminal') {
+      add(F, `<div class="abs" style="left:40px;right:40px;top:70px;height:72px;border-radius:18px;background:#16181F;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:14px;padding:0 26px"><i style="width:18px;height:18px;border-radius:50%;background:#FF5F57"></i><i style="width:18px;height:18px;border-radius:50%;background:#FEBC2E"></i><i style="width:18px;height:18px;border-radius:50%;background:#28C840"></i><span style="${mono}margin-left:16px;font-size:26px;color:#8C93A6">~/${esc((brand && brand.text) || 'autopilot')}</span></div>`);
+      const pr = counter(70, 1740, (i, sc) => `$ run ${sc.type.replace('_', '-')}`, 34, '#22C55E');
+      const cur = add(F, '<div class="abs" style="left:70px;top:1790px;width:22px;height:40px;background:#22C55E"></div>');
+      for (let b = 0; b < END / .5; b++) tl.set(cur, { opacity: b % 2 }, b * .5); }
+    else if (kind === 'ticket') {
+      add(F, `<div class="abs" style="left:-40px;top:1640px;width:80px;height:80px;border-radius:50%;background:#000"></div><div class="abs" style="right:-40px;top:1640px;width:80px;height:80px;border-radius:50%;background:#000"></div><div class="abs" style="left:60px;right:60px;top:1680px;border-top:4px dashed rgba(255,255,255,.3)"></div>`);
+      add(F, `<div class="abs" style="${mono}left:70px;top:100px;font-size:26px;color:#8C93A6;letter-spacing:.2em">BOARDING PASS</div>`);
+      counter(70, 1730, (i) => `GATE ${String(i + 1).padStart(2, '0')}`, 44, 'var(--acc)'); counter(640, 1742, (i, sc) => sc.section || 'ON TIME', 30, '#C9CEDB'); } }
+
   /* ---------- captions ---------- */
-  function captions(sc) { if (!sc.caps || !sc.caps.length) return; const list = Array.isArray(sc.caps[0]) ? sc.caps : sc.caps.map((c, i, a) => [sc.dur * i / a.length, c]);
+  function captions(sc) { if (TYPO) return sc.caps && sc.caps.length ? headline(sc) : null; if (!sc.caps || !sc.caps.length) return; const list = Array.isArray(sc.caps[0]) ? sc.caps : sc.caps.map((c, i, a) => [sc.dur * i / a.length, c]);
     list.forEach(([rt, text], i) => { const at = sc.t0 + rt + .03, until = sc.t0 + (list[i + 1] ? list[i + 1][0] : sc.dur) - .02;
       const el = add(caps, `<div class="cap">${fmtCap(text)}</div>`); const hot = /[*!_]/.test(text);
       tl.fromTo(el, { opacity: 0, scale: hot ? 1.16 : 1.04 }, { opacity: 1, scale: 1, duration: .13, ease: 'power2.out' }, at).set(el, { opacity: 0 }, until); }); }
@@ -278,7 +324,11 @@
 
   /* ================= assemble ================= */
   let tIdx = 0, prev = null;
-  S.scenes.forEach((sc, i) => { const el = add(stage, `<section class="scn" data-om-id="s${i}"></section>`); sc.el = el; const inner = add(el, '<div style="position:absolute;inset:0;transform-origin:50% 45%"></div>');
+  if (TYPO) frame(S.frame || 'receipt');
+  S.scenes.forEach((sc, i) => { const el = add(stage, `<section class="scn" data-om-id="s${i}"></section>`); sc.el = el;
+    const shift = TYPO ? add(el, '<div style="position:absolute;inset:0;transform:translateY(250px) scale(.88);transform-origin:50% 0"></div>') : el;
+    if (TYPO && sc.head) { if (!sc.caps || !sc.caps.length) sc.caps = [sc.head.replace(/\*/g, '*')]; delete sc.head; }
+    const inner = add(shift, '<div style="position:absolute;inset:0;transform-origin:50% 45%"></div>');
     tl.addLabel(i === 0 ? 'scene:film' : 'part:' + i, sc.t0);
     gsap.set(el, { visibility: 'hidden' }); tl.set(el, { visibility: 'visible' }, sc.t0).set(el, { visibility: 'hidden' }, sc.t0 + sc.dur + (i === S.scenes.length - 1 ? 3 : 0));
     const fn = SCENES[sc.type]; if (!fn) throw new Error('unknown scene type ' + sc.type); fn(sc, inner);
