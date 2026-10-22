@@ -1,0 +1,43 @@
+/* vc-motion scene library — shared look (from 14 approved reels). 1080×1920. */
+:root { --acc: #FFC83A; --bad: #FF4D5E; --ok: #C6F432; --ok2: #22C55E; --bg: #06070B; --panel: #16181F; --line: rgba(255,255,255,.08); --mut: #8C93A6; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #000; }
+#film { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); color: #fff; font-family: "Pretendard", sans-serif; letter-spacing: -0.02em; }
+.mono { font-family: "JBM", "Pretendard", monospace; letter-spacing: 0; }
+.abs { position: absolute; }
+/* background */
+#vbg { position: absolute; inset: 0; }
+#vbg .gl { position: absolute; border-radius: 50%; filter: blur(150px); }
+#vbg .g1 { left: -120px; top: 420px; width: 760px; height: 760px; opacity: .30; }
+#vbg .g2 { right: -160px; top: 980px; width: 700px; height: 700px; opacity: .18; }
+#vbg .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 60px 60px; }
+#vbg .dot { position: absolute; border-radius: 50%; background: #fff; }
+/* chrome */
+#brand { position: absolute; left: 66px; top: 300px; font-size: 30px; font-weight: 800; z-index: 5; }
+#brand b { color: var(--acc); }
+#caps { position: absolute; left: 30px; right: 30px; top: 1400px; height: 130px; z-index: 6; }
+.cap { position: absolute; left: 0; right: 0; top: 0; text-align: center; font-size: 94px; font-weight: 900; line-height: 1.1; color: #fff; white-space: nowrap; opacity: 0;
+  text-shadow: 0 4px 14px rgba(0,0,0,.75), 0 0 2px rgba(0,0,0,.9); -webkit-text-stroke: 2px rgba(0,0,0,.35); }
+.cap .y { color: var(--acc); } .cap .r { color: var(--bad); } .cap .g { color: var(--ok); }
+#flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 9; pointer-events: none; }
+#stage { position: absolute; inset: 0; transform-origin: 50% 42%; }
+.scn { position: absolute; inset: 0; visibility: hidden; transform-origin: 50% 45%; }
+/* building blocks */
+.pnl { position: absolute; background: var(--panel); border: 1px solid var(--line); border-radius: 30px; box-shadow: 0 40px 90px rgba(0,0,0,.55); overflow: hidden; }
+.pnl.hot { border: 3px solid var(--acc); box-shadow: 0 0 50px color-mix(in srgb, var(--acc) 40%, transparent), 0 40px 90px rgba(0,0,0,.55); }
+.bar { height: 60px; display: flex; align-items: center; gap: 12px; padding: 0 24px; border-bottom: 1px solid var(--line); font-size: 24px; color: var(--mut); }
+.bar i { width: 15px; height: 15px; border-radius: 50%; display: block; } .bar i:nth-child(1) { background: #FF5F57; } .bar i:nth-child(2) { background: #FEBC2E; } .bar i:nth-child(3) { background: #28C840; }
+.bar span { margin-left: 12px; }
+.pill { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 999px; font-size: 38px; font-weight: 800; white-space: nowrap; }
+.pill.acc { background: var(--acc); color: #111; } .pill.ok { background: var(--ok); color: #111; } .pill.bad { background: var(--bad); color: #fff; }
+.pill.dark { background: #20232C; color: #fff; border: 2px solid rgba(255,255,255,.12); }
+.stamp { position: absolute; padding: 18px 36px; border: 7px solid var(--bad); color: var(--bad); border-radius: 18px; font-size: 76px; font-weight: 900; white-space: nowrap;
+  background: rgba(10,10,14,.55); box-shadow: 0 0 34px color-mix(in srgb, currentColor 55%, transparent); z-index: 3; }
+.ttl { position: absolute; left: 60px; right: 60px; text-align: center; font-weight: 900; line-height: 1.12; }
+.ttl em { font-style: normal; color: var(--acc); }
+.big { font-weight: 900; line-height: 1; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.glow { text-shadow: 0 0 50px color-mix(in srgb, var(--acc) 60%, transparent); }
+.row { display: flex; align-items: center; gap: 22px; font-size: 42px; font-weight: 800; }
+.chk { width: 52px; height: 52px; border-radius: 14px; background: var(--ok2); color: #0b0c10; display: flex; align-items: center; justify-content: center; font-size: 34px; font-weight: 900; flex: none; }
+.cursor { position: absolute; width: 54px; height: 54px; z-index: 4; }
+.ripple { position: absolute; width: 120px; height: 120px; margin: -60px 0 0 -60px; border-radius: 50%; border: 6px solid var(--acc); opacity: 0; z-index: 4; }
+.ring { position: absolute; border-radius: 50%; border: 8px solid var(--acc); opacity: 0; }

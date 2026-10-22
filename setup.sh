@@ -29,7 +29,7 @@ cat > "$HOME/bin/vcm-finish" <<EOF
 # vcm-finish <film dir> <out.mp4> [mood dark|bright|tense] [seed]
 #   effects from om sound (music off) + BGM from bgm/drive.py, mixed, -11 LUFS, trimmed to the timeline.
 set -e; D="\$1"; OUT="\$2"; MOOD="\${3:-dark}"; SEED="\${4:-\$(date +%j%H)}"
-BPM=\$(grep -o "OM.music({ *bpm: *[0-9.]*" "\$D/index.html" | head -1 | grep -o "[0-9.]*\$"); BPM=\${BPM:-138}
+BPM=\$( (grep -o "OM.music({ *bpm: *[0-9.]*" "\$D/index.html"; grep -o '"bpm": *[0-9.]*' "\$D/index.html") | head -1 | grep -o "[0-9.]*\$" || true); BPM=\${BPM:-138}
 om sound "\$D" --music off >/dev/null; cp "\$D/assets/sound.wav" "\$D/.sfx.wav"
 om render "\$D" --silent >/dev/null; V=\$(ls -t "\$D"/out/*.mp4 | head -1)
 DUR=\$(ffprobe -v error -show_entries format=duration -of csv=p=0 "\$V")
