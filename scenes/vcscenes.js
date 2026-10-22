@@ -265,7 +265,7 @@
     gsap.set(el, { visibility: 'hidden' }); tl.set(el, { visibility: 'visible' }, sc.t0).set(el, { visibility: 'hidden' }, sc.t0 + sc.dur + (i === S.scenes.length - 1 ? 3 : 0));
     const fn = SCENES[sc.type]; if (!fn) throw new Error('unknown scene type ' + sc.type); fn(sc, inner);
     captions(sc);
-    tl.fromTo(inner, { scale: 1 }, { scale: 1.045, duration: sc.dur, ease: 'none' }, sc.t0);  // the camera never stops
+    const dir = i % 2 ? 1 : -1; tl.fromTo(inner, { scale: 1, rotation: -dir * .6, y: 0 }, { scale: 1.09, rotation: dir * .8, y: -24, duration: sc.dur, ease: 'none' }, sc.t0);  // the camera never stops
     if (i > 0) { let k = sc.tr || order[tIdx++ % order.length]; if (prev && prev.trUsed === k) k = order[tIdx++ % order.length]; sc.trUsed = k; TR[k](sc, sc.t0, prev); }
     prev = sc; });
   tl.to({}, { duration: .01 }, END - .01);
