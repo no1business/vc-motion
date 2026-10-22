@@ -46,11 +46,11 @@
   function flash(at, o = .6) { tl.fromTo(flashEl, { opacity: o }, { opacity: 0, duration: .2, ease: 'power2.out' }, at); }
   function shake(at, a = 9) { tl.fromTo(stage, { x: a }, { x: 0, duration: .22, ease: 'elastic.out(1,.25)' }, at); }
   function count(el, from, to, at, dur, f = (v) => num(Math.round(v))) { const o = { v: from }; el.textContent = f(from);
-    tl.fromTo(o, { v: from }, { v: to, duration: dur, ease: 'power3.out', onUpdate: () => { el.textContent = f(o.v); } }, at); OM.sfx('count', at, { dur: Math.min(dur, 1.2), gain: .5 });
+    tl.fromTo(o, { v: from }, { v: to, duration: dur, ease: 'power3.out', onUpdate: () => { el.textContent = f(o.v); } }, at); 
     tl.fromTo(el, { scale: 1.1 }, { scale: 1, duration: .25, ease: 'back.out(3)' }, at + dur); return at + dur; }
   function typeText(el, text, at, cps = 16) { const o = { n: 0 }, d = Math.max(.25, text.length / cps);
     tl.fromTo(o, { n: 0 }, { n: text.length, duration: d, ease: 'none', onUpdate: () => { const k = Math.round(o.n); el.innerHTML = esc(text.slice(0, k)) + (k < text.length ? '<span style="display:inline-block;width:4px;height:.9em;background:var(--acc);vertical-align:-.1em;margin-left:4px"></span>' : ''); } }, at);
-    el.textContent = ''; OM.sfx('type', at, { dur: d, gain: .35 }); return at + d; }
+    el.textContent = ''; return at + d; }
   function cursorClick(parent, fromXY, toXY, at) { const c = add(parent, '<svg class="cursor" viewBox="0 0 24 24"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#111" stroke-width="1.5"/></svg>');
     hidden(c); tl.fromTo(c, { opacity: 1, x: fromXY[0], y: fromXY[1] }, { x: toXY[0], y: toXY[1], duration: .5, ease: 'power3.inOut' }, at);
     tl.to(c, { scale: .8, duration: .06, yoyo: true, repeat: 1 }, at + .5);

@@ -27,16 +27,36 @@ chmod +x "$HOME/bin/vcm-film"
 cat > "$HOME/bin/vcm-finish" <<EOF
 #!/usr/bin/env bash
 # vcm-finish <film dir> <out.mp4> [mood dark|bright|tense] [seed]
-#   effects from om sound (music off) + BGM from bgm/drive.py, mixed, -11 LUFS, trimmed to the timeline.
+#   effects (om sound, music off) + BGM (bgm/drive.py) [+ narration <film>/voice.wav, BGM ducked under it] → one mp4.
 set -e; D="\$1"; OUT="\$2"; MOOD="\${3:-dark}"; SEED="\${4:-\$(date +%j%H)}"
 BPM=\$( (grep -o "OM.music({ *bpm: *[0-9.]*" "\$D/index.html"; grep -o '"bpm": *[0-9.]*' "\$D/index.html") | head -1 | grep -o "[0-9.]*\$" || true); BPM=\${BPM:-138}
 om sound "\$D" --music off >/dev/null; cp "\$D/assets/sound.wav" "\$D/.sfx.wav"
 om render "\$D" --silent >/dev/null; V=\$(ls -t "\$D"/out/*.mp4 | head -1)
-DUR=\$(ffprobe -v error -show_entries format=duration -of csv=p=0 "\$V")
+END=\$(node -e "const h=require('fs').readFileSync('\$D/index.html','utf8');const m=h.match(/window.SPEC = (.*);<\/script>/);if(m){const s=JSON.parse(m[1]);let t=0;for(const x of s.scenes)t+=x.dur||0;console.log(t>0?t+0.3:0)}else console.log(0)")
+DUR=\$(ffprobe -v error -show_entries format=duration -of csv=p=0 "\$V"); if [ "\$(python3 -c "print(1 if 0<\$END<\$DUR else 0)")" = 1 ]; then DUR=\$END; fi
 python3 "$HERE/bgm/drive.py" "\$D/.bgm.wav" --dur "\$DUR" --bpm "\$BPM" --seed "\$SEED" --mood "\$MOOD" --lufs -13 >/dev/null
-ffmpeg -v error -y -i "\$V" -i "\$D/.bgm.wav" -i "\$D/.sfx.wav" -filter_complex "[1:a]volume=1.0[m];[2:a]volume=1.4[s];[m][s]amix=inputs=2:normalize=0,loudnorm=I=-11:TP=-1:LRA=7,afade=t=out:st=\$(python3 -c "print(max(0,\$DUR-0.5))"):d=0.5[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -shortest "\$OUT"
-echo "finished: \$OUT (\$DUR s, \$BPM BPM, mood \$MOOD, seed \$SEED)"
+FADE=\$(python3 -c "print(max(0,\$DUR-0.5))")
+if [ -f "\$D/voice.wav" ]; then
+  ffmpeg -v error -y -i "\$V" -i "\$D/.bgm.wav" -i "\$D/.sfx.wav" -i "\$D/voice.wav" -filter_complex "[3:a]aresample=48000,aformat=channel_layouts=stereo,asplit=2[v1][vk];[1:a]volume=0.32[m];[m][vk]sidechaincompress=threshold=0.08:ratio=2.5:attack=30:release=350[md];[2:a]volume=0.35[s];[md][s][v1]amix=inputs=3:normalize=0,alimiter=limit=0.95,loudnorm=I=-13.5:TP=-1:LRA=9,afade=t=out:st=\$FADE:d=0.5[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -t "\$DUR" "\$OUT"
+else
+  ffmpeg -v error -y -i "\$V" -i "\$D/.bgm.wav" -i "\$D/.sfx.wav" -filter_complex "[1:a]volume=1.0[m];[2:a]volume=0.5[s];[m][s]amix=inputs=2:normalize=0,loudnorm=I=-11:TP=-1:LRA=7,afade=t=out:st=\$FADE:d=0.5[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -t "\$DUR" "\$OUT"
+fi
+echo "finished: \$OUT (\$DUR s, \$BPM BPM, mood \$MOOD, seed \$SEED, voice \$([ -f "\$D/voice.wav" ] && echo yes || echo no))"
 EOF
+cat > "$HOME/bin/vcm-voice" <<EOF
+#!/usr/bin/env bash
+# vcm-voice <spec.json> <narration.mp3> <film dir>  → spec timed to the voice, film built, voice.wav placed in it
+set -e; S="\$1"; A="\$2"; D="\$3"; T="\$S.voiced.json"
+python3 "$HERE/scenes/voice.py" "\$S" "\$A" "\$T" "/tmp/vcm_voice.wav"
+python3 "$HERE/scenes/build.py" "\$T" "\$D" >/dev/null; cp /tmp/vcm_voice.wav "\$D/voice.wav"; echo "film ready with voice: \$D"
+EOF
+chmod +x "$HOME/bin/vcm-voice"
+cat > "$HOME/bin/vcm-scenes" <<EOF
+#!/usr/bin/env bash
+# vcm-scenes <spec.json> <film dir>  → film built from the scene library (no voice)
+python3 "$HERE/scenes/build.py" "\$1" "\$2"
+EOF
+chmod +x "$HOME/bin/vcm-scenes"
 chmod +x "$HOME/bin/vcm-finish"
 # experience (this customer's memory): bring it in
 if [ -n "$1" ] && [ -f "$1" ]; then cp "$1" "$HOME/.huashu-motion/experience.md"; fi
