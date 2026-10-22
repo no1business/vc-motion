@@ -32,7 +32,7 @@ set -e; D="\$1"; OUT="\$2"; MOOD="\${3:-dark}"; SEED="\${4:-\$(date +%j%H)}"
 BPM=\$( (grep -o "OM.music({ *bpm: *[0-9.]*" "\$D/index.html"; grep -o '"bpm": *[0-9.]*' "\$D/index.html") | head -1 | grep -o "[0-9.]*\$" || true); BPM=\${BPM:-138}
 om sound "\$D" --music off >/dev/null; cp "\$D/assets/sound.wav" "\$D/.sfx.wav"
 om render "\$D" --silent >/dev/null; V=\$(ls -t "\$D"/out/*.mp4 | head -1)
-END=\$(node -e "const h=require('fs').readFileSync('\$D/index.html','utf8');const m=h.match(/window.SPEC = (.*);<\/script>/);if(m){const s=JSON.parse(m[1]);let t=0;for(const x of s.scenes)t+=x.dur||0;console.log(t>0?t+0.3:0)}else console.log(0)")
+END=\$(node -e "const h=require('fs').readFileSync('\$D/index.html','utf8');const m=h.match(/window.SPEC = (.*);<\/script>/);if(m){const s=JSON.parse(m[1]);let t=0;for(const x of s.scenes)t+=x.dur||(x.durBeats?x.durBeats*60/(s.bpm||138):0);console.log(t>0?t+0.3:0)}else console.log(0)")
 DUR=\$(ffprobe -v error -show_entries format=duration -of csv=p=0 "\$V"); if [ "\$(python3 -c "print(1 if 0<\$END<\$DUR else 0)")" = 1 ]; then DUR=\$END; fi
 python3 "$HERE/bgm/drive.py" "\$D/.bgm.wav" --dur "\$DUR" --bpm "\$BPM" --seed "\$SEED" --mood "\$MOOD" --lufs -13 >/dev/null
 FADE=\$(python3 -c "print(max(0,\$DUR-0.5))")
