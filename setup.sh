@@ -24,6 +24,20 @@ cp "$HERE/vendor/three.bundle.js" "\$D/vendor/"
 echo "film ready: \$D (1080x1920, template \$T) — fonts in assets/fonts, three.js in vendor/"
 EOF
 chmod +x "$HOME/bin/vcm-film"
+cat > "$HOME/bin/vcm-finish" <<EOF
+#!/usr/bin/env bash
+# vcm-finish <film dir> <out.mp4> [mood dark|bright|tense] [seed]
+#   effects from om sound (music off) + BGM from bgm/drive.py, mixed, -11 LUFS, trimmed to the timeline.
+set -e; D="\$1"; OUT="\$2"; MOOD="\${3:-dark}"; SEED="\${4:-\$(date +%j%H)}"
+BPM=\$(grep -o "OM.music({ *bpm: *[0-9.]*" "\$D/index.html" | head -1 | grep -o "[0-9.]*\$"); BPM=\${BPM:-138}
+om sound "\$D" --music off >/dev/null; cp "\$D/assets/sound.wav" "\$D/.sfx.wav"
+om render "\$D" --silent >/dev/null; V=\$(ls -t "\$D"/out/*.mp4 | head -1)
+DUR=\$(ffprobe -v error -show_entries format=duration -of csv=p=0 "\$V")
+python3 "$HERE/bgm/drive.py" "\$D/.bgm.wav" --dur "\$DUR" --bpm "\$BPM" --seed "\$SEED" --mood "\$MOOD" --lufs -13 >/dev/null
+ffmpeg -v error -y -i "\$V" -i "\$D/.bgm.wav" -i "\$D/.sfx.wav" -filter_complex "[1:a]volume=1.0[m];[2:a]volume=1.4[s];[m][s]amix=inputs=2:normalize=0,loudnorm=I=-11:TP=-1:LRA=7,afade=t=out:st=\$(python3 -c "print(max(0,\$DUR-0.5))"):d=0.5[a]" -map 0:v -map "[a]" -c:v copy -c:a aac -b:a 192k -ar 48000 -shortest "\$OUT"
+echo "finished: \$OUT (\$DUR s, \$BPM BPM, mood \$MOOD, seed \$SEED)"
+EOF
+chmod +x "$HOME/bin/vcm-finish"
 # experience (this customer's memory): bring it in
 if [ -n "$1" ] && [ -f "$1" ]; then cp "$1" "$HOME/.huashu-motion/experience.md"; fi
 # chrome
