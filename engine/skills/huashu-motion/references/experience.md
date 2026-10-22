@@ -133,6 +133,12 @@ Older project-specific notes (3D city film, web-product promo) are kept by the m
 - Do: 화면의 주력은 ① 굵은 텍스트 + 강한 효과(마스크 등장, 외곽선→채움, 펀치, 밑줄 긋기) ② 타이핑·출력 효과(글자가 찍혀 나옴, 영수증이 인쇄됨) ③ 강하게 움직이는 인포그래픽·도표(진행 바, 슬롯 숫자, 표가 파도처럼 채워짐) ④ 도장·스탬프처럼 '쾅' 찍히는 확정 동작. 3D는 이것들을 돋보이게 하는 한두 번의 양념.
 - Evidence: v5 영수증 컨셉(인쇄·취소선·도장·슬롯 숫자) 정지 화면에 대한 대표 반응.
 
+## VC24 · 2026-10-22 · verified · topics: variety, transitions, repetition, music, shorts
+
+- Finding: 대표 "처음에 3번이 다 똑같은 동작이잖아. 같은 동작이나 이미지가 반복되면 되게 지루하고 없어보여" (v5: 영수증이 인쇄되는 장면 3연속 + 찢어 넘기는 전환 4번). 또 "음악 자체가 이상해"(pulse E major) — 템포·끊김이 아니라 장르·음색 문제.
+- Do: 같은 등장 동작·같은 전환·같은 물건(이미지)은 영상 안에서 최대 2번, 연속 금지. 장면마다 표현 수단을 바꾼다(예: 인쇄 → 스위치 → 표/차트 → 타이핑 → 도장). 전환도 장면마다 다르게(찢기·휩·줌 스루·마스크 와이프·플래시 컷). 음악은 pulse를 기본으로 쓰지 말고, 고객이 고른 장르(설정 `music_style`)를 쓴다.
+- Evidence: v5 대표 피드백 2026-10-22.
+
 # huashu-motion 원본 경험
 
 ## 2026-10-17 | Three traps met while rebuilding a launch film
