@@ -127,6 +127,12 @@ Older project-specific notes (3D city film, web-product promo) are kept by the m
 - Do: 숏폼은 `scene:` 라벨 1개, `drop` 쓰지 않음(강조는 impact·subdrop 효과음으로), floor .85 이상, ending 'stop'. 완성 후 0.25초 단위 RMS가 -26 dB 아래로 떨어지는 구간이 없는지 확인. 레퍼런스에서는 원리(컨셉 고정·타이포·연쇄 동작)만 가져오고 틀·레이아웃·색은 가져오지 않는다. 카메라 무빙은 모든 장면에 하나씩(추적·틸트·풀백·줌 펀치), 3D는 영상의 한두 '히어로 순간'(드롭과 마지막 CTA)에 컨셉의 물건으로(영수증 컨셉이면 3D 리본·도장).
 - Evidence: v4(장면 6섹션, drop) RMS 측정 vs 단일 섹션 테스트, 2026-10-22. v5 영수증 컨셉.
 
+## VC23 · 2026-10-22 · verified · topics: craft, typography, infographic, stamp, 3d, shorts
+
+- Finding: 대표 판단 "퀄리티가 있는 영상 대부분은 3d가 많이 들어간게 아니라 굵은 텍스트에 효과를 많이 넣거나 타이핑 효과, 강력한 애니메이션의 인포그래픽이나 도표 이런게 간지를 만드는 것 같다", "도장 같은 효과도 꽤 간지난다".
+- Do: 화면의 주력은 ① 굵은 텍스트 + 강한 효과(마스크 등장, 외곽선→채움, 펀치, 밑줄 긋기) ② 타이핑·출력 효과(글자가 찍혀 나옴, 영수증이 인쇄됨) ③ 강하게 움직이는 인포그래픽·도표(진행 바, 슬롯 숫자, 표가 파도처럼 채워짐) ④ 도장·스탬프처럼 '쾅' 찍히는 확정 동작. 3D는 이것들을 돋보이게 하는 한두 번의 양념.
+- Evidence: v5 영수증 컨셉(인쇄·취소선·도장·슬롯 숫자) 정지 화면에 대한 대표 반응.
+
 # huashu-motion 원본 경험
 
 ## 2026-10-17 | Three traps met while rebuilding a launch film
