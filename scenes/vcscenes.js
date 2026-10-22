@@ -19,6 +19,24 @@
   const em = (s) => esc(s).replace(/\*(.+?)\*/g, '<em>$1</em>');
   const num = (v, dec = 0) => Number(v).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
 
+
+  /* ---------- icon set (line icons drawn in code — no emoji) ---------- */
+  const ICONS = { pen: 'M4 20h4L19 9l-4-4L4 16z M13 7l4 4', video: 'M3 6h13v12H3z M16 10l5-3v10l-5-3', chat: 'M4 5h16v11H9l-5 4z',
+    camera: 'M4 8h4l2-3h4l2 3h4v11H4z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8', play: 'M8 5v14l11-7z', music: 'M9 18V5l11-2v13 M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0 M20 16a3 3 0 1 1-6 0 3 3 0 0 1 6 0',
+    chart: 'M4 20V10 M10 20V4 M16 20v-7 M22 20H2', users: 'M8 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M2 21v-1a6 6 0 0 1 12 0v1 M16 3a4 4 0 0 1 0 8 M22 21v-1a6 6 0 0 0-4-5.6',
+    calendar: 'M3 6h18v15H3z M3 10h18 M8 3v5 M16 3v5', phone: 'M6 3h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 4 5a2 2 0 0 1 2-2',
+    cart: 'M3 4h3l3 11h10l2-8H7 M10 20a1 1 0 1 0 0-2 M18 20a1 1 0 1 0 0-2', star: 'M12 3l2.7 5.6 6.3.9-4.5 4.4 1 6.1L12 17l-5.5 3 1-6.1L3 9.5l6.3-.9z',
+    moon: 'M20 14A8 8 0 1 1 10 4a7 7 0 0 0 10 10', money: 'M3 7h18v10H3z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6 M6 10v4 M18 10v4', check: 'M5 12l5 5 9-10',
+    clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18 M12 7v5l3 2', mail: 'M3 5h18v14H3z M3 6l9 7 9-7', lock: 'M5 11h14v10H5z M8 11V7a4 4 0 0 1 8 0v4',
+    bolt: 'M13 2L4 14h7l-1 8 9-12h-7z', search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14 M21 21l-5-5', doc: 'M6 2h9l5 5v15H6z M14 2v6h6 M9 13h8 M9 17h8',
+    gear: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6 M12 2v3 M12 19v3 M2 12h3 M19 12h3 M4.9 4.9l2.1 2.1 M17 17l2.1 2.1 M4.9 19.1L7 17 M17 7l2.1-2.1',
+    rocket: 'M12 2c4 3 6 7 5 12l-5 3-5-3c-1-5 1-9 5-12z M12 10a2 2 0 1 0 0-4 M7 14l-3 3 3 1 M17 14l3 3-3 1', target: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20 M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10 M12 13a1 1 0 1 0 0-2',
+    home: 'M3 11l9-8 9 8 M5 9v12h14V9', shop: 'M3 9l2-5h14l2 5 M3 9h18v3a3 3 0 0 1-6 0 3 3 0 0 1-6 0 3 3 0 0 1-6 0z M5 13v8h14v-8', card: 'M2 6h20v12H2z M2 10h20 M6 15h4',
+    gift: 'M3 9h18v4H3z M5 13v8h14v-8 M12 9v12 M12 9C9 9 7 4 12 6c5-2 3 3 0 3', eye: 'M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6',
+    won: 'M4 6l4 12 4-10 4 10 4-12 M3 11h18 M3 14h18', key: 'M8 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8 M12 11h10 M18 11v4 M21 11v3', trend: 'M3 17l6-6 4 4 8-8 M15 7h6v6' };
+  const EMOJI = { '✍️': 'pen', '🎬': 'video', '💬': 'chat', '📸': 'camera', '▶️': 'play', '🎵': 'music', '📊': 'chart', '🤝': 'users', '📅': 'calendar', '📞': 'phone', '🛒': 'cart', '⭐': 'star', '★': 'star', '🌙': 'moon', '👀': 'eye', '💰': 'won', '🔑': 'key', '📈': 'trend', '🏠': 'home', '🔒': 'lock' };
+  function icon(name, size = 80, color = 'var(--acc)', sw = 1.8) { const k = ICONS[name] ? name : EMOJI[name]; if (!k) return `<span style="font-size:${size * .8}px">${esc(name)}</span>`;
+    return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="${color}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 ${size / 8}px color-mix(in srgb, ${color} 55%, transparent))"><path d="${ICONS[k]}"/></svg>`; }
   /* ---------- shell ---------- */
   const bg = add(film, '<div id="vbg"><div class="gl g1"></div><div class="gl g2"></div><div class="grid"></div></div>');
   const glows = S.glow || [S.accent || '#FFC83A', '#3B5BFF'];
@@ -99,11 +117,11 @@
     tl.fromTo([l1, l2], { scale: 1 }, { scale: 1.06, duration: sc.dur, ease: 'none' }, a + .4); };
   /* H/B: hero object + verdict stamp — {glyph, title, sub, stamp, stampColor, at} */
   SCENES.hero_stamp = (sc, el) => { const a = S0(sc);
-    const card = add(el, `<div class="pnl" style="left:290px;top:440px;width:500px;height:500px;border-radius:110px;display:flex;align-items:center;justify-content:center;font-size:250px">${sc.glyph || '★'}</div>`);
+    const card = add(el, `<div class="pnl" style="left:200px;top:400px;width:680px;height:680px;border-radius:150px;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 40%, #232633, #14161D)">${icon(sc.glyph || 'star', 380)}</div>`);
     pop(card, a + .05, { scale: .4, rotation: -20 }, .45); tl.fromTo(card, { rotation: -3 }, { rotation: 3, duration: sc.dur, ease: 'sine.inOut' }, a);
-    if (sc.title) pop(add(el, `<div class="ttl" style="top:1010px;font-size:66px">${em(sc.title)}</div>`), a + .35);
-    if (sc.sub) pop(add(el, `<div class="ttl" style="top:1100px;font-size:40px;color:var(--mut);font-weight:700">${em(sc.sub)}</div>`), a + .5);
-    const st = add(el, `<div class="stamp" style="left:330px;top:780px;color:${sc.stampColor || 'var(--bad)'};border-color:currentColor">${esc(sc.stamp || '주의')}</div>`);
+    if (sc.title) pop(add(el, `<div class="ttl" style="top:1130px;font-size:72px">${em(sc.title)}</div>`), a + .35);
+    if (sc.sub) pop(add(el, `<div class="ttl" style="top:1225px;font-size:42px;color:var(--mut);font-weight:700">${em(sc.sub)}</div>`), a + .5);
+    const st = add(el, `<div class="stamp" style="left:300px;top:860px;font-size:96px;color:${sc.stampColor || 'var(--bad)'};border-color:currentColor">${esc(sc.stamp || '주의')}</div>`);
     slam(st, a + (sc.at ?? sc.dur * .5), -8); burst(el, 540, 860, a + (sc.at ?? sc.dur * .5), 24, [sc.stampColor || '#FF4D5E', '#fff']); };
   /* B: rank slam — {n, label:'위', chip, items:[…]} */
   SCENES.rank = (sc, el) => { const a = S0(sc);
@@ -117,20 +135,20 @@
   /* B: terminal typing — {title, cmd, lines:[[text, ok:true|false]], tag, stamp} */
   SCENES.terminal = (sc, el) => { const a = S0(sc);
     if (sc.head) pop(add(el, `<div class="ttl" style="top:390px;font-size:72px">${em(sc.head)}</div>`), a + .05);
-    const p = add(el, `<div class="pnl" style="left:60px;right:60px;top:${sc.head ? 540 : 430}px;height:${200 + (sc.lines || []).length * 92}px"><div class="bar"><i></i><i></i><i></i><span class="mono">${esc(sc.title || 'terminal')}</span></div><div class="body" style="padding:30px 40px"></div></div>`);
+    const p = add(el, `<div class="pnl" style="left:60px;right:60px;top:${sc.head ? 540 : 430}px;height:${200 + (sc.lines || []).length * 96}px"><div class="bar"><i></i><i></i><i></i><span class="mono">${esc(sc.title || 'terminal')}</span></div><div class="body" style="padding:30px 40px"></div></div>`);
     pop(p, a + .1, { rotationX: 30, transformPerspective: 1400, y: 120 }, .4); const body = $('.body', p);
-    const c = add(body, '<div class="mono" style="font-size:38px;color:#E8EAF0;height:70px"></div>'); let at = typeText(c, '$ ' + (sc.cmd || ''), a + .5, 22);
-    (sc.lines || []).forEach(([tx, ok], i) => { const l = add(body, `<div class="mono" style="font-size:36px;height:92px;line-height:92px;color:${ok === false ? 'var(--bad)' : ok ? 'var(--ok2)' : '#9AA0B4'}"></div>`);
+    const c = add(body, '<div class="mono" style="font-size:44px;color:#E8EAF0;height:78px"></div>'); let at = typeText(c, '$ ' + (sc.cmd || ''), a + .5, 22);
+    (sc.lines || []).forEach(([tx, ok], i) => { const l = add(body, `<div class="mono" style="font-size:42px;height:96px;line-height:96px;color:${ok === false ? 'var(--bad)' : ok ? 'var(--ok2)' : '#9AA0B4'}"></div>`);
       at = typeText(l, (ok === false ? '✗ ' : ok ? '✓ ' : '  ') + tx, at + .15, 26); if (ok !== undefined) OM.sfx(ok ? 'ding' : 'tick', at, { note: i }); });
     if (sc.tag) { const tg = add(p, `<div class="abs pill bad" style="right:24px;top:8px;font-size:26px;padding:8px 18px">${esc(sc.tag)}</div>`); pop(tg, a + .45); }
-    if (sc.stamp) { const st = add(el, `<div class="stamp" style="right:90px;top:${(sc.head ? 540 : 430) + 170 + (sc.lines || []).length * 92}px">${esc(sc.stamp)}</div>`); slam(st, Math.min(a + sc.dur - .4, at + .3)); }
+    if (sc.stamp) { const st = add(el, `<div class="stamp" style="right:90px;top:${(sc.head ? 540 : 430) + 170 + (sc.lines || []).length * 96}px">${esc(sc.stamp)}</div>`); slam(st, Math.min(a + sc.dur - .4, at + .3)); }
     tl.fromTo(p, { rotationY: -6, transformPerspective: 1600 }, { rotationY: 6, duration: sc.dur, ease: 'sine.inOut' }, a); };
   /* B: checklist — {head, items:[…]} */
   SCENES.checklist = (sc, el) => { const a = S0(sc);
     if (sc.head) pop(add(el, `<div class="ttl" style="top:390px;font-size:72px">${em(sc.head)}</div>`), a + .05);
     const p = add(el, `<div class="pnl" style="left:70px;right:70px;top:540px;padding:30px 44px"></div>`); pop(p, a + .1, { y: 80 }, .35);
     const step = Math.min(.55, (sc.dur - .9) / Math.max(1, sc.items.length));
-    sc.items.forEach((it, i) => { const r = add(p, `<div class="row" style="height:118px;border-top:${i ? '1px solid var(--line)' : '0'}"><div class="chk">✓</div><div>${em(it)}</div></div>`);
+    sc.items.forEach((it, i) => { const r = add(p, `<div class="row" style="height:140px;font-size:52px;border-top:${i ? '1px solid var(--line)' : '0'}"><div class="chk">✓</div><div>${em(it)}</div></div>`);
       const at = a + .45 + i * step; hidden(r); tl.fromTo(r, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: .25 }, at);
       tl.fromTo($('.chk', r), { scale: 0 }, { scale: 1, duration: .25, ease: 'back.out(3)' }, at + .12); OM.sfx('pop', at + .12, { note: i + 1 }); }); };
   /* B: proof card (github etc.) — {host, slug, desc, count, prefix:'★ ', chips:[…], stamp} */
@@ -155,22 +173,22 @@
       hidden(s); const at = a + Math.min(sc.dur - .5, 2.0); tl.fromTo(s, { opacity: 0, scale: 2.2 }, { opacity: 1, scale: 1, duration: .14, ease: 'power4.in' }, at - .14); flash(at, .5); shake(at); OM.sfx('impact', at); } };
   /* B: usage meter overflow → hand-off — {name, label, to:98, warn, next:{name, to}} */
   SCENES.meter = (sc, el) => { const a = S0(sc);
-    const mk = (x, name) => add(el, `<div class="pnl" style="left:${x}px;top:520px;width:600px;padding:40px"><div style="display:flex;align-items:center"><span style="font-size:46px;font-weight:900">${esc(name)}</span><span class="pill dark st" style="margin-left:auto;font-size:26px;padding:8px 18px">사용 중</span></div>
-      <div style="font-size:30px;color:var(--mut);margin-top:30px">${esc(sc.label || '오늘 사용량')}</div><div class="big mono pc" style="font-size:150px;margin-top:10px"><span class="v">0</span>%</div>
+    const mk = (x, name) => add(el, `<div class="pnl" style="left:${x}px;top:480px;width:760px;padding:56px"><div style="display:flex;align-items:center"><span style="font-size:60px;font-weight:900">${esc(name)}</span><span class="pill dark st" style="margin-left:auto;font-size:26px;padding:8px 18px">사용 중</span></div>
+      <div style="font-size:30px;color:var(--mut);margin-top:30px">${esc(sc.label || '오늘 사용량')}</div><div class="big mono pc" style="font-size:210px;margin-top:10px"><span class="v">0</span>%</div>
       <div style="height:22px;border-radius:11px;background:rgba(255,255,255,.08);margin-top:24px;overflow:hidden"><div class="f" style="height:100%;width:100%;background:var(--ok2);transform-origin:0 50%"></div></div></div>`);
-    const c1 = mk(240, sc.name || 'A'); pop(c1, a + .05, { y: 100 }, .35);
+    const c1 = mk(160, sc.name || 'A'); pop(c1, a + .05, { y: 100 }, .35);
     const o = { v: 0 }, d = Math.min(1.6, sc.dur * .4), v = $('.v', c1), f = $('.f', c1), pc = $('.pc', c1);
     tl.fromTo(o, { v: 0 }, { v: sc.to || 98, duration: d, ease: 'power2.in', onUpdate: () => { v.textContent = Math.round(o.v); const c = o.v < 60 ? '#22C55E' : o.v < 88 ? '#F4D04D' : '#FF4D5E'; f.style.background = c; pc.style.color = c; f.style.transform = `scaleX(${o.v / 100})`; } }, a + .4);
     const end = a + .4 + d; const st = $('.st', c1); tl.call(() => {}, null, end);
     tl.set(st, { textContent: sc.warn || '한도 초과', background: '#FF4D5E', borderColor: '#FF4D5E' }, end); flash(end, .4); OM.sfx('impact', end, { gain: .6 }); shake(end, 6);
-    if (sc.next) { const c2 = mk(1140, sc.next.name); const mv = end + .25;
+    if (sc.next) { const c2 = mk(1060, sc.next.name); const mv = end + .25;
       tl.to(el, { x: -900, duration: .5, ease: 'power2.inOut' }, mv); tl.set($('.st', c2), { textContent: '이어서 작업' }, mv + .5);
       const o2 = { v: 0 }; tl.fromTo(o2, { v: 0 }, { v: sc.next.to || 15, duration: .45, ease: 'power2.out', onUpdate: () => { $('.v', c2).textContent = Math.round(o2.v); $('.f', c2).style.transform = `scaleX(${o2.v / 100})`; } }, mv + .55);
-      const note = add(el, '<div class="pill acc abs" style="left:620px;top:470px;font-size:30px">📝 작업 메모</div>'); hidden(note);
+      const note = add(el, '<div class="pill acc abs" style="left:700px;top:430px;font-size:34px">작업 메모 →</div>'); hidden(note);
       tl.fromTo(note, { opacity: 1, x: 0, y: 0 }, { x: 760, y: 20, duration: .55, ease: 'power2.inOut' }, mv + .05).to(note, { opacity: 0, scale: .6, duration: .15 }, mv + .6); OM.sfx('whoosh', mv); } };
   /* B: strike & replace — {old:{title, lines}, neu:{title, lines}, sticker} */
   SCENES.strike_replace = (sc, el) => { const a = S0(sc);
-    const card = (x, hot) => `<div class="pnl ${hot ? 'hot' : ''}" style="left:110px;right:110px;top:500px;padding:44px"><div style="font-size:54px;font-weight:900">${em(x.title)}</div>${(x.lines || []).map((l) => `<div style="font-size:36px;color:#C9CEDB;margin-top:18px;font-weight:600">${em(l)}</div>`).join('')}</div>`;
+    const card = (x, hot) => `<div class="pnl ${hot ? 'hot' : ''}" style="left:80px;right:80px;top:480px;padding:64px 60px"><div style="font-size:80px;font-weight:900">${em(x.title)}</div>${(x.lines || []).map((l) => `<div style="font-size:50px;color:#C9CEDB;margin-top:26px;font-weight:700">${em(l)}</div>`).join('')}</div>`;
     const o = add(el, card(sc.old)); pop(o, a + .05, { y: 140, rotationX: 30, transformPerspective: 1400 }, .35);
     const x1 = add(el, '<div class="abs" style="left:240px;top:640px;width:600px;height:26px;border-radius:13px;background:var(--bad);box-shadow:0 0 30px var(--bad);transform:rotate(35deg)"></div>');
     const x2 = add(el, '<div class="abs" style="left:240px;top:640px;width:600px;height:26px;border-radius:13px;background:var(--bad);box-shadow:0 0 30px var(--bad);transform:rotate(-35deg)"></div>');
@@ -206,7 +224,7 @@
     const svg = add(el, `<svg class="abs" style="left:0;top:0;width:1080px;height:1920px"><path d="M ${50 + gap / 2} 780 H ${50 + gap * (n - .5)}" stroke="var(--acc)" stroke-width="6" stroke-dasharray="16 14" fill="none"/></svg>`);
     const path = $('path', svg); const len = gap * (n - 1); gsap.set(path, { strokeDashoffset: len }); tl.fromTo(path, { strokeDashoffset: len }, { strokeDashoffset: 0, duration: .6, ease: 'power2.out' }, a + .4);
     tl.fromTo(path, { strokeDashoffset: 0 }, { strokeDashoffset: -300, duration: sc.dur, ease: 'none' }, a + 1.0);
-    sc.nodes.forEach(([ic, lb], i) => { const x = 50 + gap * i + gap / 2; const nd = add(el, `<div class="pnl ${i === n - 1 ? 'hot' : ''}" style="left:${x - 110}px;top:670px;width:220px;height:220px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px"><div style="font-size:90px">${ic}</div><div style="font-size:30px;font-weight:800">${esc(lb)}</div></div>`);
+    sc.nodes.forEach(([ic, lb], i) => { const x = 50 + gap * i + gap / 2; const nd = add(el, `<div class="pnl ${i === n - 1 ? 'hot' : ''}" style="left:${x - 120}px;top:650px;width:240px;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">${icon(ic, 110)}<div style="font-size:32px;font-weight:800">${esc(lb)}</div></div>`);
       pop(nd, a + .2 + i * .22); OM.sfx('pop', a + .2 + i * .22, { note: i * 2 }); });
     for (let k = 0; k < 3; k++) { const tk = add(el, `<div class="abs pill acc" style="left:${50 + gap / 2 - 40}px;top:730px;font-size:34px;padding:10px 18px">${esc(sc.token || '₩')}</div>`); hidden(tk);
       tl.fromTo(tk, { opacity: 1, x: 0 }, { x: len, duration: .8, ease: 'power1.inOut' }, a + 1.0 + k * .35).to(tk, { opacity: 0, duration: .1 }, a + 1.8 + k * .35); }
@@ -231,7 +249,7 @@
   SCENES.select_grid = (sc, el) => { const a = S0(sc);
     if (sc.head) pop(add(el, `<div class="ttl" style="top:380px;font-size:64px">${em(sc.head)}</div>`), a + .05);
     const g = add(el, '<div class="abs" style="left:90px;top:500px;width:900px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px"></div>');
-    const tiles = sc.tiles.map(([ic, lb], i) => { const t = add(g, `<div class="pnl" style="position:relative;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><div style="font-size:60px">${ic}</div><div style="font-size:26px;font-weight:800">${esc(lb)}</div></div>`);
+    const tiles = sc.tiles.map(([ic, lb], i) => { const t = add(g, `<div class="pnl" style="position:relative;height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">${icon(ic, 72, i % 3 === 0 ? 'var(--acc)' : '#E8EAF0')}<div style="font-size:28px;font-weight:800">${esc(lb)}</div></div>`);
       pop(t, a + .1 + i * .04, { scale: .3, rotation: (rnd() - .5) * 40 }, .35); return t; });
     (sc.pick || []).forEach((k, j) => { const t = tiles[k]; if (!t) return; const at = a + .9 + j * .28;
       tl.to(t, { borderColor: '#C6F432', borderWidth: 4, boxShadow: '0 0 40px rgba(198,244,50,.5)', scale: 1.08, duration: .15 }, at); OM.sfx('tick', at, { note: j });
