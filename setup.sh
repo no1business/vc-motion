@@ -58,6 +58,39 @@ python3 "$HERE/scenes/build.py" "\$1" "\$2"
 EOF
 chmod +x "$HOME/bin/vcm-scenes"
 chmod +x "$HOME/bin/vcm-finish"
+# ── motion kit (부품 25종 레퍼런스 + 60fps 렌더러 + Mixkit 믹서) ──
+( cd "$HERE/kit" && npm i --silent --no-audit --no-fund >/dev/null 2>&1 ) || echo "kit npm install failed"
+python3 -c "import numpy" 2>/dev/null || pip install -q numpy --break-system-packages >/dev/null 2>&1 || pip install -q numpy >/dev/null 2>&1
+mkdir -p "$HERE/kit/cache/sfx" "$HERE/kit/cache/music"
+cat > "$HOME/bin/vcm-kit-render" <<EOF
+#!/usr/bin/env bash
+# vcm-kit-render <kit 안 경로: films/x.html 또는 "demo.html?m=06"> <출력(확장자 없이)> <초> [full|sheet] [서브프레임 6] ["0.5,1,2" sheet 시각]
+set -e; O="\$2"; case "\$O" in /*) ;; *) O="\$PWD/\$O";; esac
+cd "$HERE/kit" && node render.js "\$1" "\$O" "\$3" "\${4:-full}" "\${5:-6}" "\${6:-}"
+if [ "\${4:-full}" = full ]; then echo "video: \$O.video.mp4"; else echo "sheet: \$O.jpg"; fi
+EOF
+cat > "$HOME/bin/vcm-kit-mix" <<EOF
+#!/usr/bin/env bash
+# vcm-kit-mix <plan.json> <out.wav>  (음원은 $HERE/kit/cache — vcm-kit-audio-in 으로 넣는다)
+SFX_DIR="$HERE/kit/cache/sfx" MUS_DIR="$HERE/kit/cache/music" python3 "$HERE/kit/audio_mix.py" "\$1" "\$2"
+EOF
+cat > "$HOME/bin/vcm-kit-audio-in" <<EOF
+#!/usr/bin/env bash
+# vcm-kit-audio-in <폴더...>  PC에서 가져온 mixkit_*.mp3 / mixkit_music_*.mp3 를 키트 캐시로 복사
+for d in "\$@"; do find "\$d" -name 'mixkit_*.mp3' | while read -r f; do case "\$(basename "\$f")" in mixkit_music_*) D="$HERE/kit/cache/music";; *) D="$HERE/kit/cache/sfx";; esac; [ -e "\$D/\$(basename "\$f")" ] || cp "\$f" "\$D/"; done; done
+echo "sfx \$(ls "$HERE/kit/cache/sfx" | wc -l) · music \$(ls "$HERE/kit/cache/music" | wc -l)"
+EOF
+cat > "$HOME/bin/vcm-kit-voice" <<EOF
+#!/usr/bin/env bash
+# vcm-kit-voice <timing.json {"scenes":[{"name":..,"caps":[..]}]}> <narration.mp3> <출력 폴더>  → spec.voiced.json + voice.wav
+set -e; mkdir -p "\$3"; python3 "$HERE/scenes/voice.py" "\$1" "\$2" "\$3/spec.voiced.json" "\$3/voice.wav"
+EOF
+cat > "$HOME/bin/vcm-kit-finish" <<EOF
+#!/usr/bin/env bash
+# vcm-kit-finish <video.mp4> <audio.wav> <out.mp4>
+ffmpeg -v error -y -i "\$1" -i "\$2" -c:v copy -c:a aac -b:a 256k -ar 48000 -shortest "\$3" && echo "finished: \$3"
+EOF
+chmod +x "$HOME"/bin/vcm-kit-*
 # experience (this customer's memory): bring it in
 if [ -n "$1" ] && [ -f "$1" ]; then cp "$1" "$HOME/.huashu-motion/experience.md"; fi
 # chrome

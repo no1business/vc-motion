@@ -1,0 +1,299 @@
+{
+ "source": "Mixkit (Free License) — 재배포 금지, 고객 PC가 url에서 직접 받아 캐시",
+ "items": [
+  {
+   "id": 1001,
+   "title": "I Do!",
+   "bpm": 86.1,
+   "dur": 127.5,
+   "drops": [
+    100.38,
+    37.2,
+    103.17
+   ],
+   "drop_strength": [
+    0.41,
+    0.37,
+    0.32
+   ],
+   "first_beat": 1.556,
+   "url": "https://assets.mixkit.co/music/1001/1001.mp3"
+  },
+  {
+   "id": 1062,
+   "title": "Friday Routine",
+   "bpm": 123.0,
+   "dur": 101.1,
+   "drops": [
+    70.12,
+    68.22,
+    16.11
+   ],
+   "drop_strength": [
+    0.4,
+    0.29,
+    0.27
+   ],
+   "first_beat": 0.743,
+   "url": "https://assets.mixkit.co/music/1062/1062.mp3"
+  },
+  {
+   "id": 1167,
+   "title": "Close Up",
+   "bpm": 103.4,
+   "dur": 95.1,
+   "drops": [
+    52.69,
+    34.39,
+    16.11
+   ],
+   "drop_strength": [
+    0.27,
+    0.26,
+    0.26
+   ],
+   "first_beat": 0.116,
+   "url": "https://assets.mixkit.co/music/1167/1167.mp3"
+  },
+  {
+   "id": 1222,
+   "title": "Flopper",
+   "bpm": 123.0,
+   "dur": 112.9,
+   "drops": [
+    14.93,
+    7.24
+   ],
+   "drop_strength": [
+    0.36,
+    0.28
+   ],
+   "first_beat": 1.463,
+   "url": "https://assets.mixkit.co/music/1222/1222.mp3"
+  },
+  {
+   "id": 126,
+   "title": "Trap Electro Vibes",
+   "bpm": 112.3,
+   "dur": 115.8,
+   "drops": [
+    89.98,
+    55.7,
+    13.79,
+    11.63
+   ],
+   "drop_strength": [
+    0.29,
+    0.27,
+    0.25,
+    0.23
+   ],
+   "first_beat": 0.209,
+   "url": "https://assets.mixkit.co/music/126/126.mp3"
+  },
+  {
+   "id": 371,
+   "title": "Cat Walk",
+   "bpm": 129.2,
+   "dur": 124.0,
+   "drops": [
+    89.35,
+    30.26,
+    87.49,
+    46.88
+   ],
+   "drop_strength": [
+    0.45,
+    0.4,
+    0.28,
+    0.22
+   ],
+   "first_beat": 0.72,
+   "url": "https://assets.mixkit.co/music/371/371.mp3"
+  },
+  {
+   "id": 468,
+   "title": "Expressive Courage",
+   "bpm": 129.2,
+   "dur": 96.4,
+   "drops": [
+    60.33,
+    15.39,
+    17.28,
+    62.16
+   ],
+   "drop_strength": [
+    0.36,
+    0.32,
+    0.28,
+    0.19
+   ],
+   "first_beat": 2.159,
+   "url": "https://assets.mixkit.co/music/468/468.mp3"
+  },
+  {
+   "id": 469,
+   "title": "Getting Older",
+   "bpm": 123.0,
+   "dur": 111.2,
+   "drops": [
+    15.39,
+    62.0
+   ],
+   "drop_strength": [
+    0.23,
+    0.2
+   ],
+   "first_beat": 1.741,
+   "url": "https://assets.mixkit.co/music/469/469.mp3"
+  },
+  {
+   "id": 470,
+   "title": "Golden Storm",
+   "bpm": 129.2,
+   "dur": 95.5,
+   "drops": [
+    14.93,
+    44.93,
+    46.81,
+    16.81
+   ],
+   "drop_strength": [
+    0.47,
+    0.33,
+    0.29,
+    0.28
+   ],
+   "first_beat": 1.695,
+   "url": "https://assets.mixkit.co/music/470/470.mp3"
+  },
+  {
+   "id": 471,
+   "title": "Rising Forest",
+   "bpm": 123.0,
+   "dur": 98.7,
+   "drops": [
+    46.97,
+    15.77,
+    17.69,
+    44.81
+   ],
+   "drop_strength": [
+    0.52,
+    0.38,
+    0.23,
+    0.22
+   ],
+   "first_beat": 2.229,
+   "url": "https://assets.mixkit.co/music/471/471.mp3"
+  },
+  {
+   "id": 473,
+   "title": "Talent in the Air",
+   "bpm": 123.0,
+   "dur": 114.1,
+   "drops": [
+    62.0,
+    63.97,
+    16.76
+   ],
+   "drop_strength": [
+    0.3,
+    0.28,
+    0.19
+   ],
+   "first_beat": 1.022,
+   "url": "https://assets.mixkit.co/music/473/473.mp3"
+  },
+  {
+   "id": 474,
+   "title": "What About Action?",
+   "bpm": 123.0,
+   "dur": 117.0,
+   "drops": [
+    63.76,
+    16.16,
+    18.13,
+    65.74
+   ],
+   "drop_strength": [
+    0.4,
+    0.26,
+    0.2,
+    0.18
+   ],
+   "first_beat": 2.508,
+   "url": "https://assets.mixkit.co/music/474/474.mp3"
+  },
+  {
+   "id": 719,
+   "title": "Drum and Bass Vibes",
+   "bpm": 117.5,
+   "dur": 96.0,
+   "drops": [
+    22.59,
+    44.74,
+    26.68,
+    77.65
+   ],
+   "drop_strength": [
+    0.49,
+    0.48,
+    0.23,
+    0.21
+   ],
+   "first_beat": 12.376,
+   "url": "https://assets.mixkit.co/music/719/719.mp3"
+  },
+  {
+   "id": 720,
+   "title": "New Bass 01",
+   "bpm": 123.0,
+   "dur": 96.0,
+   "drops": [
+    22.94,
+    24.85,
+    53.43
+   ],
+   "drop_strength": [
+    0.59,
+    0.31,
+    0.24
+   ],
+   "first_beat": 0.093,
+   "url": "https://assets.mixkit.co/music/720/720.mp3"
+  },
+  {
+   "id": 740,
+   "title": "Dance Zero",
+   "bpm": 123.0,
+   "dur": 93.3,
+   "drops": [
+    15.56
+   ],
+   "drop_strength": [
+    0.29
+   ],
+   "first_beat": 0.07,
+   "url": "https://assets.mixkit.co/music/740/740.mp3"
+  },
+  {
+   "id": 836,
+   "title": "Let's Move",
+   "bpm": 117.5,
+   "dur": 101.0,
+   "drops": [
+    16.56,
+    18.58,
+    14.33
+   ],
+   "drop_strength": [
+    0.58,
+    0.22,
+    0.21
+   ],
+   "first_beat": 0.07,
+   "url": "https://assets.mixkit.co/music/836/836.mp3"
+  }
+ ]
+}

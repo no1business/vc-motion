@@ -1,0 +1,1 @@
+{"dur": 5.5, "music": {"id": 471, "src_at": 5.0, "gain_db": -7, "fade_out": 0.6, "fade_in": 0.8}, "sidechain": [], "sfx_bus_db": -2, "sfx": [{"id": 2358, "at": 0.47, "gain_db": -6}, {"id": 2632, "at": 1.2, "gain_db": -12}, {"id": 2849, "at": 3.36, "gain_db": -4}, {"id": 563, "at": 3.36, "gain_db": -6}]}

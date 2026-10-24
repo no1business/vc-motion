@@ -1,0 +1,11 @@
+{"dur":9,"music":{"id":473,"src_at":59.45,"gain_db":-5,"fade_out":0.8,"fade_in":0.2},"sidechain":[1.95,2.55,5.36],"sfx_bus_db":-2,
+ "sfx":[{"id":1461,"at":0.3,"gain_db":-8},{"id":1468,"at":0.85,"gain_db":-4},{"id":1530,"at":0.9,"gain_db":-4},
+ {"id":1998,"at":1.0,"gain_db":-10,"align":"start","trim":0.75},
+ {"id":2854,"at":1.95,"gain_db":-6},{"id":2294,"at":1.95,"gain_db":-2},{"id":2995,"at":1.96,"gain_db":-4},
+ {"id":2627,"at":2.7,"gain_db":-3},{"id":2577,"at":3.05,"gain_db":-8},{"id":2632,"at":3.7,"gain_db":-7},
+ {"id":3114,"at":3.95,"gain_db":-6},{"id":2998,"at":4.35,"gain_db":-6},{"id":2626,"at":4.9,"gain_db":-5},
+ {"id":2498,"at":5.38,"gain_db":-2},{"id":2299,"at":5.38,"gain_db":-4},{"id":1464,"at":5.55,"gain_db":-8},
+ {"id":2356,"at":6.02,"gain_db":-7},{"id":2870,"at":6.38,"gain_db":-7},
+ {"id":2356,"at":6.64,"gain_db":-7},{"id":2870,"at":7.0,"gain_db":-7},
+ {"id":2356,"at":7.26,"gain_db":-7},{"id":2870,"at":7.62,"gain_db":-7},
+ {"id":2356,"at":7.88,"gain_db":-7},{"id":2865,"at":8.24,"gain_db":-4}]}

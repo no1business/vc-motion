@@ -1,0 +1,3 @@
+{"dur":4.8,"music":{"id":720,"src_at":20.59,"gain_db":-5,"fade_out":0.7,"fade_in":0.3},"sidechain":[2.35],"sfx_bus_db":-2,
+ "sfx":[{"id":2925,"at":0.15,"gain_db":-4},{"id":2635,"at":0.8,"gain_db":-6},{"id":2626,"at":1.6,"gain_db":-7},{"id":1143,"at":2.4,"gain_db":-2},
+ {"id":3108,"at":2.6,"gain_db":-9},{"id":2632,"at":3.9,"gain_db":-5},{"id":2299,"at":4.35,"gain_db":-5}]}

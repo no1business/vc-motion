@@ -1,0 +1,4 @@
+{"dur":5.4,"music":{"id":836,"src_at":12.27,"gain_db":-5,"fade_out":0.7,"fade_in":0.4},"sidechain":[2.78,3.75],"sfx_bus_db":-2,
+ "sfx":[{"id":3109,"at":0.12,"gain_db":-6},{"id":1152,"at":0.76,"gain_db":-4},{"id":2633,"at":0.95,"gain_db":-8},
+ {"id":1371,"at":1.0,"gain_db":-6,"align":"start"},{"id":2303,"at":2.78,"gain_db":-1},{"id":1152,"at":2.76,"gain_db":-6},
+ {"id":1457,"at":3.2,"gain_db":-9},{"id":2626,"at":3.85,"gain_db":-3},{"id":2636,"at":4.62,"gain_db":-5}]}

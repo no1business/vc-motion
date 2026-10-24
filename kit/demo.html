@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script><style>
+@font-face{font-family:P;src:url(fonts/Pretendard-Black.woff2);font-weight:900}
+@font-face{font-family:P;src:url(fonts/Pretendard-ExtraBold.woff2);font-weight:800}
+@font-face{font-family:P;src:url(fonts/Pretendard-Bold.woff2);font-weight:700}
+@font-face{font-family:P;src:url(fonts/Pretendard-SemiBold.woff2);font-weight:600}
+@font-face{font-family:A;src:url(fonts/archivo-latin-wdth-normal.woff2);font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:M;src:url(fonts/geist-mono-latin-wght-normal.woff2);font-weight:100 900}
+@font-face{font-family:S;src:url(fonts/instrument-serif-latin-400-italic.woff2);font-style:italic}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}canvas{display:block}
+</style><link rel="stylesheet" href="node_modules/@fontsource/nanum-pen-script/index.css"><link rel="stylesheet" href="node_modules/@fontsource/noto-serif-kr/600.css"><link rel="stylesheet" href="node_modules/@fontsource/noto-serif-kr/700.css"><link rel="stylesheet" href="node_modules/@fontsource/noto-serif-kr/800.css"><link rel="stylesheet" href="node_modules/@fontsource/noto-serif-kr/900.css"></head><body><canvas id="c" width="1080" height="1920"></canvas>
+<script src="core.js"></script>
+<script>
+const q = new URLSearchParams(location.search), m = q.get('m'), opts = JSON.parse(q.get('o') || '{}');
+const s = document.createElement('script'); s.src = { '01': 'm01_lightpoint.js', '02': 'm02_slitscan.js', '03': 'm03_particles.js', '04': 'm04_checklist.js', '05': 'm05_droptype.js', '06': 'm06_embers.js', '07': 'm07_fluid.js', '08': 'm08_orbits.js', '09': 'm09_chrome.js', '10': 'm10_echo.js', '11': 'm11_kinetic.js', '12': 'm12_graph.js', '13': 'm13_cards.js', '14': 'm14_wipes.js', '15': 'm15_prism.js', '16': 'm16_flap.js', '17': 'm17_loader.js', '18': 'm18_sunrise.js', '19': 'm19_fold.js', '20': 'm20_strike.js', '21': 'm21_width.js', '22': 'm22_dots.js', '23': 'm23_ink.js', '24': 'm24_clock.js', '25': 'm25_chat.js' }[m];
+s.onload = async () => { await Promise.all(['900 100px P','800 100px P','700 100px P','600 100px P','800 100px A','400 100px M','italic 100px S','800 60px "Noto Serif KR"','600 60px "Noto Serif KR"','400 60px "Nanum Pen Script"'].map(f => document.fonts.load(f)));
+  const pre = window['M' + m].preload; if (pre) await document.fonts.load('400 60px "Nanum Pen Script"', pre + JSON.stringify(opts));
+  const ctx = document.getElementById('c').getContext('2d'); const draw = await window['M' + m](opts); window.seek = (t) => draw(ctx, t); seek(0); window.ready = true; };
+if (m === '09' || m === '15' || m === '19') s.type = 'module';
+document.body.appendChild(s);
+</script></body></html>

@@ -1,0 +1,47 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<!-- 새 영상 시작점. 이 파일을 films/<날짜>_<주제>.html 로 복사해서 장면을 새로 짠다(부품 코드를 통째로 붙이지 않는다).
+     렌더: vcm-kit-render films/<파일>.html <출력이름> <초>  /  검수: ... sheet "0.5,2,4,..."  -->
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js","three/addons/":"../node_modules/three/examples/jsm/"}}</script>
+<style>
+@font-face{font-family:P;src:url(../fonts/Pretendard-Black.woff2);font-weight:900}
+@font-face{font-family:P;src:url(../fonts/Pretendard-ExtraBold.woff2);font-weight:800}
+@font-face{font-family:P;src:url(../fonts/Pretendard-Bold.woff2);font-weight:700}
+@font-face{font-family:P;src:url(../fonts/Pretendard-SemiBold.woff2);font-weight:600}
+@font-face{font-family:A;src:url(../fonts/archivo-latin-wdth-normal.woff2);font-weight:100 900;font-stretch:62% 125%}
+@font-face{font-family:M;src:url(../fonts/geist-mono-latin-wght-normal.woff2);font-weight:100 900}
+@font-face{font-family:S;src:url(../fonts/instrument-serif-latin-400-italic.woff2);font-style:italic}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}canvas{display:block}
+</style>
+<link rel="stylesheet" href="../node_modules/@fontsource/nanum-pen-script/index.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/noto-serif-kr/700.css">
+<link rel="stylesheet" href="../node_modules/@fontsource/noto-serif-kr/900.css">
+</head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../core.js"></script>
+<script>
+// 내레이션이 있으면 vcm-kit-voice 가 만든 SPEC(장면 길이·자막 시각)을 여기에 붙여 넣는다. 없으면 null.
+window.SPEC = null;
+const W = 1080, H = 1920;
+const { prog, E, lerp, clamp, spring } = K;
+const g = document.getElementById('c').getContext('2d');
+const em = document.createElement('canvas'); em.width = W; em.height = H; const eg = em.getContext('2d');  // 빛나는 것만 여기에
+const bloom = K.makeBloom(W, H), grain = K.makeGrain(W, H);
+
+window.seek = function (t) {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.fillStyle = '#07080B'; g.fillRect(0, 0, W, H);
+  eg.setTransform(1, 0, 0, 1, 0, 0); eg.clearRect(0, 0, W, H);
+  // ── 장면은 시간 구간으로 나누되, 다음 장면은 앞 장면의 요소에서 태어나게(끊는 전환 금지) ──
+  // 예: if (t < 3) { ... } if (t >= 2.6 && t < 6) { ... }
+
+  bloom(g, em, { k1: .7, k2: .6, k3: .5 });
+  // 내레이션 자막 (SPEC 있을 때만, 1300~1600px 띠는 비워 둘 것)
+  if (window.SPEC) { const a = K.at(window.SPEC, t); if (a && a.cap) K.caption(g, a.cap, a.capT); }
+  grain(g, t, .05);
+};
+window.addEventListener('load', async () => {
+  await Promise.all(['900 100px P', '800 100px P', '700 100px P', '600 100px P'].map((f) => document.fonts.load(f)));
+  // 명조·손글씨를 쓰면 실제 글자로 로드: await document.fonts.load('700 100px "Noto Serif KR"', '쓰는 글자들');
+  window.seek(0); window.ready = true;
+});
+</script>
+</body></html>

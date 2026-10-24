@@ -1,0 +1,285 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<script type="importmap">{"imports":{"three":"../node_modules/three/build/three.module.js"}}</script>
+<style>
+@font-face{font-family:P;src:url(../fonts/Pretendard-Black.woff2);font-weight:900}
+@font-face{font-family:P;src:url(../fonts/Pretendard-ExtraBold.woff2);font-weight:800}
+@font-face{font-family:P;src:url(../fonts/Pretendard-Bold.woff2);font-weight:700}
+@font-face{font-family:P;src:url(../fonts/Pretendard-SemiBold.woff2);font-weight:600}
+@font-face{font-family:M;src:url(../fonts/geist-mono-latin-wght-normal.woff2);font-weight:100 900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}canvas{display:block}
+</style><link rel="stylesheet" href="../node_modules/@fontsource/nanum-pen-script/index.css"></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../core.js"></script>
+<script>
+// 보험 숏폼 '잠든 보험금' — 부품 01·06·03·08·04·09·05 를 참고해 새로 설계 (18초, 세로)
+const W = 1080, H = 1920, CX = 540;
+const C = { ink: '#060504', bone: '#EFE9DD', gold: [242, 196, 110], goldH: '#F2C46E', red: '#E0452B', dim: 'rgba(239,233,221,.5)' };
+const { prog, E, lerp, clamp, spring, noise1, hash } = K;
+const g = document.getElementById('c').getContext('2d');
+const em = document.createElement('canvas'); em.width = W; em.height = H; const eg = em.getContext('2d');
+const bloom = K.makeBloom(W, H), grain = K.makeGrain(W, H);
+const rg = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+const PEN = (s) => `400 ${s}px "Nanum Pen Script"`;
+function rr(x, y, w, h, r, gg = g) { gg.beginPath(); gg.moveTo(x + r, y); gg.arcTo(x + w, y, x + w, y + h, r); gg.arcTo(x + w, y + h, x, y + h, r); gg.arcTo(x, y + h, x, y, r); gg.arcTo(x, y, x + w, y, r); gg.closePath(); }
+
+/* ---------- 영수증 종이 (원근 투영) ---------- */
+const PW = 900, PD = 1150, FOC = 1500;
+const LINE_Y = 900;
+function proj(x, z, h = 0, pc = 0) { // pc: 카메라 밀기(0~1)
+  const F = FOC, s = F / (F + z * .85 - pc * 330); return [CX + x * s, 1180 - (z * .52 + h) * s + pc * 60, s];
+}
+const mc = document.createElement('canvas').getContext('2d');
+const rows = [['진료비 영수증', 84, 900, 0], ['진료일   2026. 03. 14', 50, 600, 1], ['병   원   서울 하늘내과의원', 50, 600, 1], ['', 60, 600, 1], ['128,000원', 140, 900, 3]];
+const glyphs = []; let zz = PD / 2 - 170; const AMT = { x0: 0, x1: 0, z: 0 };
+rows.forEach(([ln, size, wt, kind]) => {
+  mc.font = `${wt} ${size}px P`; const lw = mc.measureText(ln).width; let x = -lw / 2;
+  if (kind === 3) { AMT.x0 = x - 30; AMT.x1 = x + lw + 30; AMT.z = zz; }
+  [...ln].forEach((ch) => { const w = mc.measureText(ch).width; if (ch !== ' ') glyphs.push({ ch, x: x + w / 2, z: zz, size, wt, kind, r: hash(glyphs.length * 7 + 1), q: hash(glyphs.length * 11 + 5) }); x += w; });
+  zz -= size * 1.9;
+});
+// 열 고리: 금액 위치에서 퍼짐
+const HC = { x: 0, z: AMT.z + 30 };
+const R = (t) => 1700 * E.in3(prog(t, 6.0, 1.6)) * .6 + 1700 * prog(t, 6.0, 1.6) * .4;
+glyphs.forEach((q) => { const d = Math.hypot(q.x - HC.x, q.z - HC.z); let lo = 0, hi = 9; for (let k = 0; k < 30; k++) { const m = (lo + hi) / 2; R(m) >= d ? hi = m : lo = m; } q.th = hi; });
+
+/* ---------- 불씨 입자 (글자마다 여러 개) → 소용돌이 → "돌려받을 돈" ---------- */
+const tp = K.textPoints('돌려받을 돈', { font: '900 210px P', step: 7, cx: CX, cy: 860, maxW: 960 });
+const P = []; const rnd = K.rng(9);
+const NP = Math.min(3200, tp.length);
+for (let i = 0; i < NP; i++) { const gq = glyphs[i % glyphs.length]; P.push({ g: gq, ox: (rnd() - .5) * gq.size * .9, oz: (rnd() - .5) * gq.size * .5, u: rnd(), v: rnd(), w: rnd(), tx: tp[i][0], ty: tp[i][1], d: rnd() * .35 }); }
+const VC = [CX, 860];
+function ember(p, t) {
+  const gq = p.g, age = t - gq.th - p.w * .15;
+  const [sx, sy] = proj(gq.x + p.ox, gq.z + p.oz, 0, 1);
+  if (age < 0) return null;
+  // 떠오름
+  const lift = Math.max(0, age);
+  let x = sx + noise1(p.u * 40 + t * .9, 2) * 70 * clamp(lift), y = sy - 420 * Math.pow(lift, 1.25) - 30 * p.v;
+  // 소용돌이 (6.7~7.7)
+  const vw = E.inOut3(prog(t, 6.7 + p.u * .2, .9));
+  if (vw > 0) { const dx = x - VC[0], dy = y - VC[1]; const r0 = Math.hypot(dx, dy * .7) + 1, a0 = Math.atan2(dy, dx);
+    const S = E.in3(prog(t, 6.75, 1.05)); const rad = r0 * (1 - S * .85) * (1 + .25 * p.v), ang = a0 + S * (2.4 + 3 * (1 - Math.min(1, r0 / 900)));
+    x = lerp(x, VC[0] + Math.cos(ang) * rad, vw); y = lerp(y, VC[1] + Math.sin(ang) * rad * .75, vw); }
+  // 글자로 수렴 (7.65~)
+  const q = E.inOut3(prog(t, 7.65 + p.d, .75));
+  if (q > 0) { const bend = Math.sin(Math.PI * q) * (p.u - .5) * 220; x = lerp(x, p.tx, q) + bend * .5; y = lerp(y, p.ty, q) - bend * .3; }
+  // 핵으로 수축 (9.0~9.45)
+  const k = E.in3(prog(t, 9.0 + p.w * .12, .38));
+  if (k > 0) { x = lerp(x, CX, k); y = lerp(y, 840, k); }
+  return [x, y, lift, q, k];
+}
+
+/* ---------- 궤도 고리 ---------- */
+const FO = 1600;
+function OP(x, y, z, rx, rz) { const y1 = y * Math.cos(rx) - z * Math.sin(rx), z1 = y * Math.sin(rx) + z * Math.cos(rx); const x2 = x * Math.cos(rz) - y1 * Math.sin(rz), y2 = x * Math.sin(rz) + y1 * Math.cos(rz); const s = FO / (FO + z1); return [CX + x2 * s, 840 + y2 * s, s, z1]; }
+const RINGS = [
+  { kind: 'text', R: 300, rx: .36, rz: -.45, spin: .6, t: 9.55, cap: '서류 확인', txt: [...'진료비 영수증 · 세부 내역서 · 처방전 · '.repeat(2)] },
+  { kind: 'wave', R: 380, rx: .3, rz: .6, spin: -.45, t: 10.45, cap: '보험사 접수' },
+  { kind: 'dots', R: 450, rx: .48, rz: .05, spin: .32, t: 11.35, cap: '보험금 지급' },
+];
+
+/* ---------- 3D 방패 (three.js, 아래 모듈에서 채움) ---------- */
+window.shield = null;
+
+window.seek = function (t) {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.fillStyle = C.ink; g.fillRect(0, 0, W, H);
+  const vg = g.createRadialGradient(CX, 900, 80, CX, 900, 1250); vg.addColorStop(0, 'rgba(60,46,30,.35)'); vg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = vg; g.fillRect(0, 0, W, H);
+  eg.setTransform(1, 0, 0, 1, 0, 0); eg.clearRect(0, 0, W, H);
+
+  /* ===== S1 훅: 금빛 점 → 선 → 선에서 올라오는 질문 (0~2.9) ===== */
+  if (t < 3.0) {
+    const dot = E.out3(prog(t, 0, .35)), st = E.expo(prog(t, .35, .55));
+    const half = 470 * st, y = LINE_Y;
+    const fl = Math.exp(-Math.pow((t - .32) / .08, 2));
+    const pg = eg.createRadialGradient(CX, y, 0, CX, y, 200); pg.addColorStop(0, rg(C.gold, (.9 * dot + fl) * (1 - st * .6))); pg.addColorStop(1, rg(C.gold, 0)); eg.fillStyle = pg; eg.fillRect(0, 0, W, H);
+    eg.save(); eg.translate(CX, y); eg.scale(1, .03); const sg = eg.createRadialGradient(0, 0, 0, 0, 0, 900); sg.addColorStop(0, rg([255, 220, 160], .6 * dot)); sg.addColorStop(1, rg([255, 220, 160], 0)); eg.fillStyle = sg; eg.beginPath(); eg.arc(0, 0, 900, 0, 7); eg.fill(); eg.restore();
+    // 선 (2.4~ 종이 먼 쪽 가장자리로 변신하므로 여기선 2.45까지)
+    if (t < 2.5) { const lg = eg.createLinearGradient(CX - half, 0, CX + half, 0); lg.addColorStop(0, rg(C.gold, 0)); lg.addColorStop(.1, rg(C.gold, .95)); lg.addColorStop(.9, rg(C.gold, .95)); lg.addColorStop(1, rg(C.gold, 0)); eg.fillStyle = lg; eg.fillRect(CX - half, y - 1.5, half * 2, 3); }
+    // 선에서 올라오는 두 줄 (선이 마스크 경계)
+    const out = E.in3(prog(t, 2.25, .35));
+    g.save(); g.beginPath(); g.rect(0, 0, W, y - 6); g.clip();
+    g.textAlign = 'center'; g.letterSpacing = '-2px';
+    g.font = '700 84px P'; g.fillStyle = C.bone; g.fillText('병원 다녀오고', CX, 690 + (1 - E.out5(prog(t, .7, .6))) * 260 + out * 300);
+    g.font = '900 132px P'; g.fillStyle = C.goldH; g.fillText('청구 안 하셨죠?', CX, 850 + (1 - E.out5(prog(t, .85, .6))) * 200 + out * 260);
+    g.restore();
+    const mt = clamp((t - 1.4) / .4) * (1 - out);
+    g.font = '500 26px M'; g.textAlign = 'center'; g.fillStyle = `rgba(239,233,221,${.55 * mt})`; g.letterSpacing = '6px'; g.fillText('UNCLAIMED · 2026', CX, y + 56);
+  }
+
+  /* ===== S2 영수증 종이: 선이 종이 먼 가장자리가 되어 앞으로 펼쳐짐 (2.4~6.0) + S3 불타며 글자가 불씨로 (6.0~) ===== */
+  if (t >= 2.4 && t < 9.2) {
+    const unroll = E.inOut3(prog(t, 2.4, .7));
+    const pc = E.inOut3(prog(t, 2.9, 3.0));            // 천천히 다가감
+    const nearZ = lerp(PD / 2, -PD / 2, unroll);
+    const r = R(t), gone = prog(t, 7.2, .5);
+    const pagePath = (gg) => { gg.beginPath(); [[-PW / 2, PD / 2], [PW / 2, PD / 2], [PW / 2, nearZ], [-PW / 2, nearZ]].forEach(([x, z], i) => { const [a, b] = proj(x, z, 0, pc); i ? gg.lineTo(a, b) : gg.moveTo(a, b); }); gg.closePath(); };
+    const circ = (gg, rad) => { for (let i = 0; i <= 72; i++) { const a = i / 72 * Math.PI * 2; const [x, y] = proj(HC.x + Math.cos(a) * rad, HC.z + Math.sin(a) * rad, 0, pc); i ? gg.lineTo(x, y) : gg.moveTo(x, y); } };
+    if (gone < 1) {
+      g.save(); g.globalAlpha = 1 - gone; pagePath(g); g.clip(); pagePath(g); if (r > 20) circ(g, Math.max(0, r - 24));
+      const [cx, cy] = proj(0, 0, 0, pc); const pgd = g.createRadialGradient(cx, cy - 120, 0, cx, cy, 950); pgd.addColorStop(0, '#EDE3CF'); pgd.addColorStop(.6, '#B9A98C'); pgd.addColorStop(1, '#3A3125'); g.fillStyle = pgd; g.fill('evenodd');
+      if (r > 20) { g.beginPath(); circ(g, r - 8); g.strokeStyle = 'rgba(40,24,10,.85)'; g.lineWidth = 30; g.stroke(); }
+      g.restore();
+      if (r > 20) { eg.save(); pagePath(eg); eg.clip(); eg.beginPath(); circ(eg, r - 24); eg.strokeStyle = `rgba(255,150,50,${.9 * (1 - gone)})`; eg.lineWidth = 7; eg.stroke(); eg.strokeStyle = `rgba(255,200,110,${.35 * (1 - gone)})`; eg.lineWidth = 24; eg.stroke(); eg.restore(); }
+    }
+    // 잉크 글자 (아직 안 탄 것)
+    for (const q of glyphs) {
+      if (t >= q.th || unroll < .02) continue;
+      if (q.z < nearZ) continue;
+      const [sx, sy, s] = proj(q.x, q.z, 0, pc);
+      g.save(); g.setTransform(s, 0, 0, s * .6, sx, sy); g.font = `${q.wt} ${q.size}px P`; g.textAlign = 'center';
+      g.fillStyle = q.kind === 3 ? '#1b130b' : '#2c2117'; g.globalAlpha = clamp((unroll - .3) * 2); g.fillText(q.ch, 0, 0); g.restore();
+    }
+    // 금액 선택 박스 + 손글씨 주석 (3.6~6.0)
+    if (t > 3.5 && t < 6.15) {
+      const out = prog(t, 5.95, .2);
+      const [x0, y0, s0] = proj(AMT.x0, AMT.z + 80, 0, pc), [x1, y1] = proj(AMT.x1, AMT.z - 30, 0, pc);
+      const bp = spring(t, 3.6, 2.6, .6), bx = lerp(x0 - 40, x0, bp), bw = (x1 - x0) * lerp(1.1, 1, bp), by = y0 - 10, bh = (y1 - y0) + 20;
+      g.save(); g.globalAlpha = clamp(bp * 1.5) * (1 - out); g.strokeStyle = C.goldH; g.lineWidth = 3; g.strokeRect(bx, by, bw, bh);
+      [[bx, by], [bx + bw, by], [bx, by + bh], [bx + bw, by + bh]].forEach(([hx, hy], i) => { const hp = spring(t, 3.7 + i * .05, 3, .5); g.fillStyle = C.ink; g.fillRect(hx - 9 * hp, hy - 9 * hp, 18 * hp, 18 * hp); g.strokeRect(hx - 9 * hp, hy - 9 * hp, 18 * hp, 18 * hp); });
+      g.font = '700 26px P'; const lab = '미청구 보험금'; const lw = g.measureText(lab).width + 28; g.fillStyle = C.goldH; g.fillRect(bx, by - 50, lw * E.out3(prog(t, 3.85, .35)), 42); g.fillStyle = C.ink; g.fillText(lab, bx + 14, by - 20); g.restore();
+      // 빨간 손글씨: 동그라미 + "청구 안 함!" + 화살표
+      const np = prog(t, 4.25, .6);
+      if (np > 0) { g.save(); g.globalAlpha = 1 - out; g.strokeStyle = C.red; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); const cxm = (x0 + x1) / 2, cym = (y0 + y1) / 2;
+        for (let i = 0; i <= 60 * clamp(np * 1.4); i++) { const a = -2.2 + i / 60 * Math.PI * 2.15; const rx = (x1 - x0) * .62 + noise1(i * .3, 4) * 6, ry = (y1 - y0) * .95 + noise1(i * .3, 6) * 4; i ? g.lineTo(cxm + Math.cos(a) * rx, cym + Math.sin(a) * ry) : g.moveTo(cxm + Math.cos(a) * rx, cym + Math.sin(a) * ry); } g.stroke();
+        g.font = PEN(104); g.fillStyle = C.red; const nt = '청구 안 함!'; g.fillText(nt.slice(0, Math.ceil(nt.length * clamp((np - .4) / .5))), x1 - 200, y1 + 150); g.restore(); }
+      const n2 = prog(t, 4.9, .6);
+      if (n2 > 0) { g.save(); g.globalAlpha = 1 - out; g.font = PEN(92); g.fillStyle = '#B5341F'; const nt = '3년 지나면 소멸'; g.fillText(nt.slice(0, Math.ceil(nt.length * clamp(n2 * 1.3))), x0 + 10, y1 + 300); g.restore(); }
+    }
+    // 열원: 금액 위에 빛 한 점 (5.5~6.2)
+    const [hx, hy] = proj(HC.x, HC.z, 20, pc);
+    const hp = E.out3(prog(t, 5.45, .5)) * (1 - prog(t, 6.4, .6)) + Math.exp(-Math.pow((t - 6.0) / .07, 2)) * 1.1;
+    if (hp > 0) { const gr = eg.createRadialGradient(hx, hy, 0, hx, hy, 320); gr.addColorStop(0, `rgba(255,248,230,${hp})`); gr.addColorStop(.08, `rgba(255,220,160,${hp * .8})`); gr.addColorStop(.4, `rgba(255,170,90,${hp * .15})`); gr.addColorStop(1, 'rgba(255,170,90,0)'); eg.fillStyle = gr; eg.fillRect(0, 0, W, H);
+      eg.save(); eg.translate(hx, hy); eg.scale(1, .03); const s2 = eg.createRadialGradient(0, 0, 0, 0, 0, 900); s2.addColorStop(0, `rgba(255,220,170,${hp * .7})`); s2.addColorStop(1, 'rgba(255,220,170,0)'); eg.fillStyle = s2; eg.beginPath(); eg.arc(0, 0, 900, 0, 7); eg.fill(); eg.restore(); }
+    // 불씨 입자
+    eg.lineCap = 'round';
+    for (const p of P) {
+      const a = ember(p, t); if (!a) continue; const b = ember(p, t - 1 / 40) || a;
+      const [x, y, lift, q, k] = a; if (x < -100 || x > W + 100 || y < -200 || y > H + 100) continue;
+      const al = (q > 0 ? lerp(.55, .85, q) : .7) * (1 - clamp(lift - 1.6)) * (k > 0 ? 1 - k * .6 : 1) + (q > .9 ? .2 : 0);
+      if (al <= .02) continue;
+      const heat = clamp(lift * 2), cgv = lerp(150, 220, heat), cbv = lerp(50, 140, heat);
+      let qx = b[0], qy = b[1]; const sp = Math.hypot(x - qx, y - qy); if (sp > 40) { qx = x + (qx - x) * 40 / sp; qy = y + (qy - y) * 40 / sp; }
+      eg.strokeStyle = `rgba(255,${cgv | 0},${cbv | 0},${al})`; eg.lineWidth = q > .9 ? 2.6 : 2; eg.beginPath(); eg.moveTo(qx, qy); eg.lineTo(sp < .5 ? x + .6 : x, y); eg.stroke();
+    }
+    // 수렴 후 굳는 글자 판
+    const solid = E.inOut3(prog(t, 8.2, .4)) * (1 - E.in3(prog(t, 8.95, .25))) * .5;
+    if (solid > 0) { eg.save(); eg.globalAlpha = solid; eg.filter = 'sepia(1) saturate(2.5) hue-rotate(-12deg) brightness(1.05)'; eg.drawImage(tp.canvas, 0, 0); eg.restore(); }
+    const sub = E.out5(prog(t, 8.3, .4)) * (1 - prog(t, 8.95, .2));
+    if (sub > 0) { g.save(); g.font = '600 40px P'; g.textAlign = 'center'; g.letterSpacing = '4px'; g.fillStyle = `rgba(239,233,221,${.75 * sub})`; g.fillText('아직 받을 수 있어요', CX, 1060 + (1 - sub) * 30); g.restore(); }
+  }
+
+  /* ===== S4 핵 + 궤도 고리 = 처리 과정 (9.3~12.8) ===== */
+  if (t >= 9.2 && t < 12.95) {
+    const col = E.in3(prog(t, 12.45, .4));
+    const core = E.out3(prog(t, 9.25, .4)) + Math.exp(-Math.pow((t - 12.85) / .08, 2)) * 1.2;
+    { const gr = eg.createRadialGradient(CX, 840, 0, CX, 840, 170); gr.addColorStop(0, `rgba(255,252,240,${core})`); gr.addColorStop(.2, rg(C.gold, .7 * core)); gr.addColorStop(1, rg(C.gold, 0)); eg.fillStyle = gr; eg.fillRect(0, 0, W, H); }
+    RINGS.forEach((ri, i) => {
+      const grow = E.inOut3(prog(t, ri.t, .75)); if (grow <= 0) return;
+      const Rr = ri.R * (1 - col), sw = grow * Math.PI * 2, a0 = t * ri.spin;
+      const n = ri.kind === 'text' ? 44 : ri.kind === 'wave' ? 140 : 84;
+      for (let k = 0; k < n; k++) {
+        const a = k / n * Math.PI * 2; if (a > sw) break; const aa = a + a0;
+        if (ri.kind === 'wave') { const amp = 6 + 36 * Math.abs(noise1(k * .35 + t * 4, 3)); const [x1, y1, s, z] = OP(Math.cos(aa) * (Rr - amp), 0, Math.sin(aa) * (Rr - amp), ri.rx, ri.rz), [x2, y2] = OP(Math.cos(aa) * (Rr + amp), 0, Math.sin(aa) * (Rr + amp), ri.rx, ri.rz);
+          eg.strokeStyle = rg(C.gold, (z < 0 ? .9 : .28) * clamp((sw - a) * 4)); eg.lineWidth = 3 * s; eg.beginPath(); eg.moveTo(x1, y1); eg.lineTo(x2, y2); eg.stroke(); continue; }
+        const [x, y, s, z] = OP(Math.cos(aa) * Rr, 0, Math.sin(aa) * Rr, ri.rx, ri.rz); const al = (z < 0 ? .95 : .3) * clamp((sw - a) * 4);
+        if (ri.kind === 'text') { eg.save(); eg.translate(x, y); eg.rotate(ri.rz); eg.scale(s, s * .8); eg.font = '700 34px P'; eg.textAlign = 'center'; eg.fillStyle = `rgba(255,236,200,${al})`; eg.fillText(ri.txt[k], 0, 10); eg.restore(); }
+        else if (k % 14 === 0) { eg.save(); eg.translate(x, y); eg.scale(s, s); eg.fillStyle = `rgba(255,236,200,${al})`; eg.beginPath(); eg.arc(0, 0, 13, 0, 7); eg.fill(); eg.strokeStyle = `rgba(10,8,4,${al})`; eg.lineWidth = 3; eg.lineCap = 'round'; eg.beginPath(); eg.moveTo(-6, 0); eg.lineTo(-2, 5); eg.lineTo(7, -5); eg.stroke(); eg.restore(); }
+        else { eg.fillStyle = `rgba(255,236,200,${al})`; eg.beginPath(); eg.arc(x, y, 3.2 * s, 0, 7); eg.fill(); }
+      }
+    });
+    // 아래: 단계 칩 + 진행 점
+    const k = clamp(Math.floor((t - 9.55) / .9), 0, 2), st = 9.55 + k * .9;
+    const cin = spring(t, st + .15, 2.6, .62), done = t > st + .55, out = prog(t, 12.4, .25);
+    if (t > 9.6) { g.save(); g.globalAlpha = clamp(cin * 1.4) * (1 - out); const cw = 640, chh = 118, cx = CX - cw / 2, cy = 1330;
+      g.translate(CX, cy + chh / 2); g.scale(lerp(.85, 1, cin), lerp(.85, 1, cin)); g.translate(-CX, -(cy + chh / 2));
+      rr(cx, cy, cw, chh, 59); g.fillStyle = 'rgba(239,233,221,.06)'; g.fill(); g.strokeStyle = done ? C.goldH : 'rgba(239,233,221,.25)'; g.lineWidth = 2.5; g.stroke();
+      g.beginPath(); g.arc(cx + 60, cy + 59, 26, 0, 7); g.fillStyle = done ? C.goldH : 'rgba(239,233,221,.12)'; g.fill();
+      if (done) { g.strokeStyle = C.ink; g.lineWidth = 5; g.lineCap = 'round'; g.beginPath(); g.moveTo(cx + 48, cy + 60); g.lineTo(cx + 57, cy + 69); g.lineTo(cx + 73, cy + 50); g.stroke(); }
+      else { g.strokeStyle = C.goldH; g.lineWidth = 4; g.beginPath(); const a = t * 9; g.arc(cx + 60, cy + 59, 16, a, a + 4); g.stroke(); }
+      g.font = '800 46px P'; g.fillStyle = C.bone; g.textAlign = 'left'; g.fillText(RINGS[k].cap, cx + 112, cy + 74);
+      g.font = '700 28px P'; g.textAlign = 'right'; g.fillStyle = done ? C.goldH : C.dim; g.fillText(done ? '완료' : '진행 중', cx + cw - 40, cy + 70); g.restore();
+      for (let i = 0; i < 3; i++) { const on = i < k + (done ? 1 : 0); g.globalAlpha = 1 - out; g.fillStyle = on ? C.goldH : 'rgba(239,233,221,.25)'; g.beginPath(); g.arc(CX - 36 + i * 36, 1490, on ? 9 : 7, 0, 7); g.fill(); } g.globalAlpha = 1;
+      g.font = '600 28px P'; g.textAlign = 'center'; g.fillStyle = `rgba(239,233,221,${.55 * (1 - out)})`; g.fillText(`${k + (done ? 1 : 0)}/3 처리 완료`, CX, 1545); }
+    // 위 헤드라인
+    const hl = E.out5(prog(t, 9.4, .5)) * (1 - E.in3(prog(t, 12.35, .3)));
+    if (hl > 0) { g.save(); g.beginPath(); g.rect(0, 300, W, 140); g.clip(); g.font = '900 96px P'; g.textAlign = 'center'; g.letterSpacing = '-2px'; g.fillStyle = C.bone; g.fillText('복잡한 과정은', CX, 410 + (1 - hl) * 130); g.restore(); }
+  }
+
+  /* ===== S5 금빛 크롬 방패 + "청구는 저희가 대신합니다" (12.8~15.6) / S6 CTA (15.4~18) ===== */
+  if (t >= 12.8) {
+    const ent = spring(t, 12.85, 1.6, .6), mv = E.inOut3(prog(t, 15.3, .7));
+    if (window.shield) { const img = window.shield.draw(lerp(0, 0, mv), lerp(170, 420, mv), clamp(ent) * lerp(1.15, .62, mv), -Math.PI * 2.5 * (1 - E.out5(prog(t, 12.85, 1.4))) + Math.sin(t * 1.1) * .45 + E.expo(prog(t, 14.4, .6)) * Math.PI * 2, t); g.drawImage(img, 0, 0); }
+    const fl = Math.exp(-Math.pow((t - 12.85) / .1, 2)) * .9;
+    if (fl > .01) { const gr = eg.createRadialGradient(CX, 840, 0, CX, 840, 600); gr.addColorStop(0, `rgba(255,248,230,${fl})`); gr.addColorStop(1, 'rgba(255,220,160,0)'); eg.fillStyle = gr; eg.fillRect(0, 0, W, H); }
+    const out = E.in3(prog(t, 15.2, .3));
+    const l1 = E.out5(prog(t, 13.35, .55)), l2 = E.out5(prog(t, 13.55, .55));
+    g.save(); g.textAlign = 'left'; g.letterSpacing = '-3px';
+    g.beginPath(); g.rect(0, 1240, W, 140); g.clip(); g.font = '900 128px P'; g.fillStyle = C.bone; g.fillText('청구는', 80, 1360 + (1 - l1) * 150 - out * 150); g.restore();
+    g.save(); g.textAlign = 'left'; g.letterSpacing = '-3px'; g.beginPath(); g.rect(0, 1390, W, 150); g.clip(); g.font = '900 128px P'; g.fillStyle = C.goldH; g.fillText('저희가 대신해요.', 80, 1510 + (1 - l2) * 150 - out * 150); g.restore();
+    const mp = E.out3(prog(t, 14.0, .6)) * (1 - out);
+    if (mp > 0) { g.fillStyle = `rgba(239,233,221,${.3 * mp})`; g.fillRect(80, 1572, 920 * mp, 1.5); g.font = '600 30px P'; g.fillStyle = `rgba(239,233,221,${.6 * mp})`; g.textAlign = 'left'; g.letterSpacing = '0px'; g.fillText('보험금 청구권 소멸시효 3년 · 상법 제662조', 80, 1624); }
+    // CTA
+    if (t > 15.45) {
+      const pg = spring(t, 15.5, 2, .62), press = Math.sin(Math.PI * prog(t, 16.4, .22)), sw = E.expo(prog(t, 16.9, .45));
+      const pw = lerp(140, 820, pg), ph = 146, px = CX - pw / 2, py = 1180;
+      g.save(); g.translate(CX, py + ph / 2); g.scale(1 - .05 * press, 1 - .05 * press); g.translate(-CX, -(py + ph / 2));
+      rr(px, py, pw, ph, 73); g.fillStyle = C.goldH; g.fill(); g.clip();
+      g.font = '800 54px P'; g.fillStyle = C.ink; g.textAlign = 'center'; g.textBaseline = 'middle'; g.letterSpacing = '-1px';
+      g.fillText("댓글에 '청구' 남기기", CX, py + ph / 2 + (1 - E.out5(prog(t, 15.7, .45))) * ph - sw * ph);
+      g.fillText('무료로 찾아드려요', CX, py + ph / 2 + ph - sw * ph); g.restore();
+      const hl = E.out5(prog(t, 15.85, .5));
+      g.save(); g.beginPath(); g.rect(0, 860, W, 260); g.clip(); g.font = '900 108px P'; g.textAlign = 'center'; g.letterSpacing = '-3px';
+      g.fillStyle = C.bone; g.fillText('놓친 보험금', CX, 980 + (1 - hl) * 130); g.fillStyle = C.goldH; g.fillText('지금 찾으세요', CX, 1100 + (1 - E.out5(prog(t, 16.0, .5))) * 130); g.restore();
+      // 커서 탭
+      const ci = spring(t, 15.9, 1.6, .75); const cx = lerp(1150, 700, ci), cy = lerp(1650, 1265, ci);
+      g.save(); g.translate(cx, cy); g.scale(1 - .18 * press, 1 - .18 * press); g.fillStyle = '#fff'; g.strokeStyle = C.ink; g.lineWidth = 4; g.beginPath(); g.moveTo(0, 0); g.lineTo(0, 62); g.lineTo(15, 48); g.lineTo(26, 72); g.lineTo(37, 67); g.lineTo(26, 44); g.lineTo(46, 44); g.closePath(); g.fill(); g.stroke(); g.restore();
+      const rp = prog(t, 16.55, .6); if (rp > 0 && rp < 1) { g.strokeStyle = `rgba(242,196,110,${1 - rp})`; g.lineWidth = 4; g.beginPath(); g.arc(700, 1265, 40 + 120 * E.out3(rp), 0, 7); g.stroke(); }
+      // 흐르는 띠
+      const mw = E.out5(prog(t, 16.2, .5)); g.save(); g.translate(0, 1520); g.rotate(-.04); g.fillStyle = C.goldH; g.fillRect(-20, 0, (W + 40) * mw, 110); g.beginPath(); g.rect(-20, 0, (W + 40) * mw, 110); g.clip();
+      g.font = '900 60px P'; g.fillStyle = C.ink; g.textBaseline = 'middle'; g.textAlign = 'left'; g.fillText('무료 조회 · 무료 청구 · 3년 안에 · '.repeat(6), -(t - 16.2) * 200, 58); g.restore();
+    }
+  }
+  // 프레임 크롬
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  const ch = clamp(t / .5);
+  g.globalAlpha = .55 * ch; g.fillStyle = C.bone;
+  [[46, 46, 1, 1], [W - 46, 46, -1, 1], [46, H - 46, 1, -1], [W - 46, H - 46, -1, -1]].forEach(([x, y, dx, dy]) => { g.fillRect(dx > 0 ? x : x - 32, y - 1.5, 32, 3); g.fillRect(x - 1.5, dy > 0 ? y : y - 32, 3, 32); });
+  g.font = '600 24px P'; g.textAlign = 'left'; g.letterSpacing = '1px'; g.fillText('보험금 체크', 70, 90);
+  g.font = '500 20px M'; g.textAlign = 'right'; g.fillText(`00:00:${String(Math.floor(t)).padStart(2, '0')}:${String(Math.floor(t * 60) % 60).padStart(2, '0')}`, W - 70, 90);
+  g.textAlign = 'left'; g.fillText('CLAIM GUIDE / 01', 70, H - 74); g.globalAlpha = 1;
+  bloom(g, em, { k1: .8, k2: .7, k3: .6 });
+  grain(g, t, .055);
+};
+</script>
+<script type="module">
+import * as THREE from 'three';
+const W = 1080, H = 1920;
+const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+const r = new THREE.WebGLRenderer({ canvas: cv, antialias: true, alpha: true, preserveDrawingBuffer: true }); r.setPixelRatio(1); r.setSize(W, H, false); r.toneMapping = THREE.ACESFilmicToneMapping; r.toneMappingExposure = 1.2;
+const ec = document.createElement('canvas'); ec.width = 2048; ec.height = 1024; const x = ec.getContext('2d');
+const gv = x.createLinearGradient(0, 0, 0, 1024); gv.addColorStop(0, '#fff3dc'); gv.addColorStop(.2, '#5a4630'); gv.addColorStop(.5, '#6e5638'); gv.addColorStop(.8, '#1a140d'); gv.addColorStop(1, '#3a2d1e'); x.fillStyle = gv; x.fillRect(0, 0, 2048, 1024);
+[[300, 26, '#fff6e6'], [430, 44, '#ffffff'], [512, 30, '#ffe9c4'], [600, 18, '#fff0d8'], [700, 14, '#ffd27a']].forEach(([y, h, c]) => { const b = x.createLinearGradient(0, y - h, 0, y + h); b.addColorStop(0, 'rgba(0,0,0,0)'); b.addColorStop(.5, c); b.addColorStop(1, 'rgba(0,0,0,0)'); x.fillStyle = b; x.fillRect(0, y - h, 2048, h * 2); });
+for (let k = 0; k < 6; k++) { x.fillStyle = 'rgba(255,250,240,.9)'; x.fillRect(k * 341 + 60, 140, 90, 260); }
+const et = new THREE.CanvasTexture(ec); et.mapping = THREE.EquirectangularReflectionMapping; et.colorSpace = THREE.SRGBColorSpace;
+const scene = new THREE.Scene(); scene.environment = new THREE.PMREMGenerator(r).fromEquirectangular(et).texture;
+const cam = new THREE.PerspectiveCamera(24, W / H, 10, 20000); cam.position.set(0, 0, 960 / Math.tan(THREE.MathUtils.degToRad(12)));
+const s = new THREE.Shape(); const w = 230, h = 280;
+s.moveTo(0, h); s.bezierCurveTo(70, h - 30, 150, h - 40, w, h - 20); s.lineTo(w, 40); s.bezierCurveTo(w, -120, 120, -230, 0, -h); s.bezierCurveTo(-120, -230, -w, -120, -w, 40); s.lineTo(-w, h - 20); s.bezierCurveTo(-150, h - 40, -70, h - 30, 0, h);
+const geo = new THREE.ExtrudeGeometry(s, { depth: 60, bevelEnabled: true, bevelThickness: 34, bevelSize: 30, bevelSegments: 16, curveSegments: 64 }); geo.center();
+const gold = new THREE.MeshPhysicalMaterial({ color: 0xffd9a0, metalness: 1, roughness: .07, clearcoat: 1, clearcoatRoughness: .04 });
+const ck = new THREE.Shape(); ck.moveTo(-110, 10); ck.lineTo(-40, -60); ck.lineTo(115, 95); ck.lineTo(80, 130); ck.lineTo(-40, 10); ck.lineTo(-75, 45); ck.closePath();
+const cg = new THREE.ExtrudeGeometry(ck, { depth: 30, bevelEnabled: true, bevelThickness: 14, bevelSize: 10, bevelSegments: 8 }); cg.center();
+const ckm = new THREE.Mesh(cg, new THREE.MeshPhysicalMaterial({ color: 0x14100a, metalness: .6, roughness: .2, clearcoat: 1 })); ckm.position.z = 80;
+const grp = new THREE.Group(); grp.add(new THREE.Mesh(geo, gold)); grp.add(ckm); scene.add(grp);
+window.shield = { draw(x0, y0, sc, ry, t) { grp.position.set(x0, y0, 0); grp.scale.setScalar(Math.max(sc, .0001)); grp.rotation.set(Math.sin(t * .9) * .15 - .1, ry, Math.sin(t * .7) * .05); r.render(scene, cam); return cv; } };
+window.glReady = true;
+</script>
+<script>
+window.addEventListener('load', async () => {
+  await Promise.all(['900 100px P', '800 100px P', '700 100px P', '600 100px P', '500 20px M'].map((f) => document.fonts.load(f)));
+  await document.fonts.load('400 60px "Nanum Pen Script"', '청구안함!3년지나면소멸');
+  await new Promise((res) => { const c = () => window.glReady ? res() : setTimeout(c, 30); c(); });
+  window.seek(0); window.ready = true;
+});
+</script>
+</body></html>
