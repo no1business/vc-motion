@@ -59,7 +59,9 @@ EOF
 chmod +x "$HOME/bin/vcm-scenes"
 chmod +x "$HOME/bin/vcm-finish"
 # ── motion kit (부품 25종 레퍼런스 + 60fps 렌더러 + Mixkit 믹서) ──
-( cd "$HERE/kit" && npm i --silent --no-audit --no-fund >/dev/null 2>&1 ) || echo "kit npm install failed"
+# 3D·명조·손글씨 글꼴은 kit/vendor 에 들어 있다(npm 이 막힌 환경에서도 동작). npm 은 쓰지 않는다.
+mkdir -p "$HERE/kit/node_modules" && cp -rn "$HERE/kit/vendor/." "$HERE/kit/node_modules/" 2>/dev/null
+[ -f "$HERE/kit/node_modules/three/build/three.module.js" ] || echo "kit vendor copy failed"
 python3 -c "import numpy" 2>/dev/null || pip install -q numpy --break-system-packages >/dev/null 2>&1 || pip install -q numpy >/dev/null 2>&1
 mkdir -p "$HERE/kit/cache/sfx" "$HERE/kit/cache/music"
 cat > "$HOME/bin/vcm-kit-render" <<EOF
@@ -96,6 +98,9 @@ if [ -n "$1" ] && [ -f "$1" ]; then cp "$1" "$HOME/.huashu-motion/experience.md"
 # chrome
 CH="${OM_CHROME:-}"
 [ -z "$CH" ] && CH=$(ls -d /opt/pw-browsers/chromium-*/chrome-linux/chrome 2>/dev/null | sort | tail -1)
+[ -z "$CH" ] && CH=$(ls -d "$HOME"/.cache/ms-playwright/chromium-*/chrome-linux*/chrome 2>/dev/null | sort | tail -1)
+[ -z "$CH" ] && CH=$(node -e "try{console.log(require('playwright').chromium.executablePath())}catch(e){}" 2>/dev/null)
+[ -n "$CH" ] && [ ! -x "$CH" ] && CH=""
 [ -z "$CH" ] && CH=$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)
 ENV="export PATH=\"$HOME/bin:\$PATH\" OM_SAMPLES=\"$HERE/samples\" OM_CHROME=\"$CH\""
 echo "$ENV" > "$HOME/.vcm_env"
