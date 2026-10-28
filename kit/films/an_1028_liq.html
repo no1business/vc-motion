@@ -22,15 +22,15 @@ window.SPEC = {
      "가격은 그대로인데"
     ],
     [
-     1.042,
+     1.203,
      "왜 *롱만*"
     ],
     [
-     1.505,
+     1.738,
      "털릴까요?"
     ]
    ],
-   "dur": 2.233
+   "dur": 2.556
   },
   {
    "name": "why",
@@ -40,11 +40,11 @@ window.SPEC = {
      "범인은 가격이 아니라"
     ],
     [
-     1.372,
+     1.326,
      "*빌린 돈*입니다"
     ]
    ],
-   "dur": 2.395
+   "dur": 2.32
   },
   {
    "name": "lev",
@@ -54,19 +54,19 @@ window.SPEC = {
      "레버리지 *20배*면"
     ],
     [
-     1.138,
+     1.259,
      "약 *5%*만"
     ],
     [
-     1.771,
+     1.958,
      "반대로 가도"
     ],
     [
-     2.529,
+     2.797,
      "!청산!이에요"
     ]
    ],
-   "dur": 3.312
+   "dur": 3.646
   },
   {
    "name": "wick",
@@ -76,19 +76,19 @@ window.SPEC = {
      "한 번 크게 흔들고"
     ],
     [
-     1.208,
+     1.318,
      "제자리로 돌아와도"
     ],
     [
-     2.295,
+     2.505,
      "롱은 이미"
     ],
     [
-     2.899,
+     3.164,
      "!사라진 뒤!죠"
     ]
    ],
-   "dur": 3.774
+   "dur": 4.105
   },
   {
    "name": "chain",
@@ -98,19 +98,19 @@ window.SPEC = {
      "진짜 무서운 건"
     ],
     [
-     0.839,
+     0.967,
      "청산이"
     ],
     [
-     1.153,
+     1.329,
      "또 다른 *청산*을"
     ],
     [
-     1.992,
+     2.296,
      "부른다는 겁니다"
     ]
    ],
-   "dur": 2.98
+   "dur": 3.412
   },
   {
    "name": "cta",
@@ -120,15 +120,15 @@ window.SPEC = {
      "청산 몰리는 순간"
     ],
     [
-     1.552,
+     1.701,
      "궁금하면"
     ],
     [
-     2.241,
+     2.458,
      "댓글에 *알림*"
     ]
    ],
-   "dur": 3.426
+   "dur": 3.742
   }
  ],
  "voice": "voice.wav"
@@ -247,7 +247,7 @@ window.seek = function (t) {
     const mv = E.inOut3(prog(t, s2 + .7, d[2] - 1.3));
     const my = lerp(top, bot, mv), hit = t > s2 + .7 + d[2] - 1.3;
     g.fillStyle = hit ? C.redH : C.cyH; g.beginPath(); g.moveTo(x0 + 8, my); g.lineTo(x0 + 40, my - 20); g.lineTo(x0 + 40, my + 20); g.closePath(); g.fill();
-    text(g, `-${(mv * 5).toFixed(1)}%`, x0 + 70, my + 22, '800 72px M', hit ? C.redH : C.bone, 'left', '-2px');
+    text(g, mv < .01 ? '0.0%' : `-${(mv * 5).toFixed(1)}%`, x0 + 70, my + 22, '800 72px M', hit ? C.redH : C.bone, 'left', '-2px');
     eg.save(); eg.globalAlpha = .6; eg.fillStyle = hit ? C.redH : C.cyH; eg.beginPath(); eg.arc(x0 + 20, my, 10, 0, 7); eg.fill(); eg.restore();
     // 도장 '청산'
     const sp = spring(t, s2 + .7 + d[2] - 1.25, 2.8, .5);
