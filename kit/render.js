@@ -5,7 +5,10 @@ const fs = require('fs'), { execSync } = require('child_process');
   const [url, out, secs, mode, subA] = process.argv.slice(2);
   const dur = Number(secs), SUB = Number(subA || 6), FPS = 60;
   const dir = out + '.frames'; fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir);
-  const br = await chromium.launch(process.env.GL ? { args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] } : {});
+  // Windows 고객 PC: 설치된 Chrome(OM_CHROME)을 쓴다 — Playwright 브라우저를 따로 받지 않음
+  const lo = process.env.GL ? { args: ['--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] } : {};
+  if (process.env.OM_CHROME && fs.existsSync(process.env.OM_CHROME)) lo.executablePath = process.env.OM_CHROME;
+  const br = await chromium.launch(lo);
   const pg = await br.newPage({ viewport: { width: 1080, height: 1920 } });
   pg.on('console', m => { if (m.type() === 'error') console.log('ERR', m.text()); });
   pg.on('pageerror', e => console.log('PAGEERR', e.message));
@@ -22,11 +25,12 @@ const fs = require('fs'), { execSync } = require('child_process');
     const ts = process.argv[7].split(',').map(Number);
     for (let i = 0; i < ts.length; i++) { await pg.evaluate((t) => window.seek(t), ts[i]); await pg.screenshot({ path: `${dir}/p${String(i).padStart(3, '0')}.jpg`, type: 'jpeg', quality: 80 }); }
     const cols = Math.min(6, ts.length);
-    execSync(`ffmpeg -y -loglevel error -pattern_type glob -i '${dir}/p*.jpg' -vf "scale=360:640,tile=${cols}x${Math.ceil(ts.length / cols)}:padding=6:color=gray" -frames:v 1 ${out}.jpg`);
+    // glob 패턴은 Windows ffmpeg 에 없음 → 번호 패턴, 경로는 큰따옴표(cmd.exe 호환)
+    execSync(`ffmpeg -y -loglevel error -i "${dir}/p%03d.jpg" -vf "scale=360:640,tile=${cols}x${Math.ceil(ts.length / cols)}:padding=6:color=gray" -frames:v 1 "${out}.jpg"`);
   } else {
     const N = Math.round(dur * FPS * SUB); const t0 = Date.now();
     for (let i = 0; i < N; i++) { await pg.evaluate((t) => window.seek(t), (i - (SUB - 1) / 2) / (FPS * SUB) + 1 / (2 * FPS)); await pg.screenshot({ path: `${dir}/${String(i).padStart(5, '0')}.jpg`, type: 'jpeg', quality: 93 }); if (i % 600 === 0) console.log(i, N, ((Date.now() - t0) / 1000).toFixed(0) + 's'); }
-    execSync(`ffmpeg -y -loglevel error -framerate ${FPS * SUB} -i ${dir}/%05d.jpg -vf "tmix=frames=${SUB},fps=${FPS},format=yuv420p" -c:v libx264 -crf 16 -preset slow ${out}.video.mp4`);
+    execSync(`ffmpeg -y -loglevel error -framerate ${FPS * SUB} -i "${dir}/%05d.jpg" -vf "tmix=frames=${SUB},fps=${FPS},format=yuv420p" -c:v libx264 -crf 16 -preset slow "${out}.video.mp4"`);
     if (!process.env.KEEP_FRAMES) fs.rmSync(dir, { recursive: true, force: true });  // 프레임 수천 장 → 디스크 아끼기
   }
   await br.close(); if (srv) srv.close();

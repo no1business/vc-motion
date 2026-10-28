@@ -6,6 +6,12 @@
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"
 mkdir -p "$HOME/bin" "$HOME/.huashu-motion"
+export PATH="$HOME/bin:$PATH"
+# Windows(Git Bash) 고객 PC: python3 이름이 없으면 python 으로 연결
+# (Windows 의 python3 는 스토어 바로가기일 수 있어 실제로 실행되는지 확인)
+if ! python3 -c "import sys" >/dev/null 2>&1 && python -c "import sys" >/dev/null 2>&1; then
+  printf '#!/usr/bin/env bash\nexec "%s" "$@"\n' "$(command -v python)" > "$HOME/bin/python3"; chmod +x "$HOME/bin/python3"
+fi
 cat > "$HOME/bin/om" <<EOF
 #!/usr/bin/env bash
 exec node "$HERE/engine/cli/om.js" "\$@"
@@ -62,6 +68,13 @@ chmod +x "$HOME/bin/vcm-finish"
 # 3D·명조·손글씨 글꼴은 kit/vendor 에 들어 있다(npm 이 막힌 환경에서도 동작). npm 은 쓰지 않는다.
 mkdir -p "$HERE/kit/node_modules" && cp -rn "$HERE/kit/vendor/." "$HERE/kit/node_modules/" 2>/dev/null
 [ -f "$HERE/kit/node_modules/three/build/three.module.js" ] || echo "kit vendor copy failed"
+# 렌더러용 playwright: 클라우드 작업 공간엔 이미 있음. 고객 PC(Windows)는 브라우저 없이 라이브러리만 받는다(설치된 Chrome 사용)
+if ! (cd "$HERE/kit" && node -e "require('playwright')" >/dev/null 2>&1); then
+  (cd "$HERE/kit" && PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i -s --no-save --no-audit --no-fund playwright-core@1.48.2 >/dev/null 2>&1) \
+    && mkdir -p "$HERE/kit/node_modules/playwright" \
+    && echo "module.exports = require('playwright-core');" > "$HERE/kit/node_modules/playwright/index.js" \
+    || echo "playwright install failed"
+fi
 python3 -c "import numpy" 2>/dev/null || pip install -q numpy --break-system-packages >/dev/null 2>&1 || pip install -q numpy >/dev/null 2>&1
 mkdir -p "$HERE/kit/cache/sfx" "$HERE/kit/cache/music"
 cat > "$HOME/bin/vcm-kit-render" <<EOF
@@ -102,6 +115,9 @@ CH="${OM_CHROME:-}"
 [ -z "$CH" ] && CH=$(node -e "try{console.log(require('playwright').chromium.executablePath())}catch(e){}" 2>/dev/null)
 [ -n "$CH" ] && [ ! -x "$CH" ] && CH=""
 [ -z "$CH" ] && CH=$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)
+# Windows(Git Bash) 고객 PC: 설치된 Chrome / Edge
+if [ -z "$CH" ]; then for c in "/c/Program Files/Google/Chrome/Application/chrome.exe" "/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" "$LOCALAPPDATA/Google/Chrome/Application/chrome.exe" "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"; do [ -f "$c" ] && { CH="$c"; break; }; done; fi
+case "$(uname -s)" in MINGW*|MSYS*|CYGWIN*) [ -n "$CH" ] && CH=$(cygpath -w "$CH");; esac
 ENV="export PATH=\"$HOME/bin:\$PATH\" OM_SAMPLES=\"$HERE/samples\" OM_CHROME=\"$CH\""
 echo "$ENV" > "$HOME/.vcm_env"
 eval "$ENV"
