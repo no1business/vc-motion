@@ -1,0 +1,262 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:P;src:url(../fonts/Pretendard-Black.woff2);font-weight:900}
+@font-face{font-family:P;src:url(../fonts/Pretendard-ExtraBold.woff2);font-weight:800}
+@font-face{font-family:P;src:url(../fonts/Pretendard-Bold.woff2);font-weight:700}
+@font-face{font-family:P;src:url(../fonts/Pretendard-SemiBold.woff2);font-weight:600}
+@font-face{font-family:M;src:url(../fonts/geist-mono-latin-wght-normal.woff2);font-weight:100 900}
+html,body{margin:0;width:1080px;height:1920px;overflow:hidden;background:#000}canvas{display:block}
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script src="../core.js"></script>
+<script>
+// 벤처크래프트 '월급 250 직원, 실제로는 300 가까이' — 은유: 급여명세서가 아래로 길어지며 숨은 비용이 쌓이고, 마지막에 시계(반복 업무)가 드러남
+// 참고 부품(원리만): m04 처리 체크리스트, m12 카운트업·선택 박스, m24 시계, m14 버튼 눌림
+window.SPEC = {
+ "scenes": [
+  {
+   "name": "hook",
+   "caps": [
+    [
+     0,
+     "월급 *250만 원* 직원"
+    ],
+    [
+     1.481,
+     "실제로는"
+    ],
+    [
+     1.975,
+     "!300만 원! 가까이"
+    ],
+    [
+     3.209,
+     "나갑니다"
+    ]
+   ],
+   "dur": 3.853
+  },
+  {
+   "name": "ins",
+   "caps": [
+    [
+     0,
+     "사장님이 내는"
+    ],
+    [
+     1.183,
+     "*4대보험*이"
+    ],
+    [
+     2.028,
+     "월급의 약 *10%*예요"
+    ]
+   ],
+   "dur": 4.036
+  },
+  {
+   "name": "ret",
+   "caps": [
+    [
+     0,
+     "여기에 *퇴직금*이"
+    ],
+    [
+     0.917,
+     "매달 *12분의 1*씩"
+    ],
+    [
+     2.064,
+     "쌓이고요"
+    ]
+   ],
+   "dur": 2.672
+  },
+  {
+   "name": "total",
+   "caps": [
+    [
+     0,
+     "그래서 250이 아니라"
+    ],
+    [
+     1.284,
+     "거의 !300!입니다"
+    ]
+   ],
+   "dur": 2.397
+  },
+  {
+   "name": "twist",
+   "caps": [
+    [
+     0,
+     "근데 진짜 비싼 건"
+    ],
+    [
+     1.42,
+     "매일 붙잡고 있는"
+    ],
+    [
+     2.698,
+     "*반복 업무*예요"
+    ]
+   ],
+   "dur": 3.841
+  },
+  {
+   "name": "cta",
+   "caps": [
+    [
+     0,
+     "반복 업무부터"
+    ],
+    [
+     0.921,
+     "줄이고 싶다면"
+    ],
+    [
+     1.842,
+     "프로필 링크에서"
+    ],
+    [
+     2.894,
+     "*30분 무료 상담*"
+    ]
+   ],
+   "dur": 4.228
+  }
+ ],
+ "voice": "voice.wav"
+}; /*SPEC*/
+const W = 1080, H = 1920, CX = 540;
+const C = { bg: '#070604', gold: [242, 196, 110], goldH: '#F2C46E', bone: '#EFE9DD', dim: 'rgba(239,233,221,.45)', ink: '#0B0907', red: '#E0452B' };
+const { prog, E, lerp, clamp, spring, noise1 } = K;
+const g = document.getElementById('c').getContext('2d');
+const em = document.createElement('canvas'); em.width = W; em.height = H; const eg = em.getContext('2d');
+const bloom = K.makeBloom(W, H), grain = K.makeGrain(W, H);
+const rg = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+function rr(gg, x, y, w, h, r) { gg.beginPath(); gg.moveTo(x + r, y); gg.arcTo(x + w, y, x + w, y + h, r); gg.arcTo(x + w, y + h, x, y + h, r); gg.arcTo(x, y + h, x, y, r); gg.arcTo(x, y, x + w, y, r); gg.closePath(); }
+function text(gg, s, x, y, font, col, align = 'center', ls = '-2px') { gg.font = font; gg.fillStyle = col; gg.textAlign = align; gg.letterSpacing = ls; gg.fillText(s, x, y); }
+const DEF = [3.2, 2.8, 2.8, 2.6, 3.4, 3.8];
+const DUR = () => (window.SPEC ? window.SPEC.scenes.map((s) => s.dur) : DEF);
+function ST(i) { const d = DUR(); let s = 0; for (let k = 0; k < i; k++) s += d[k]; return s; }
+const won = (v) => Math.round(v).toLocaleString('ko-KR');
+const ROWS = [['국민연금', '4.75%', 118750], ['건강보험', '3.60%', 89875], ['장기요양', '0.47%', 11640], ['고용보험', '1.15%', 28750]];
+const INS = ROWS.reduce((a, r) => a + r[2], 0), RET = 2500000 / 12;
+
+window.seek = function (t) {
+  g.setTransform(1, 0, 0, 1, 0, 0); g.globalAlpha = 1; g.fillStyle = C.bg; g.fillRect(0, 0, W, H);
+  eg.setTransform(1, 0, 0, 1, 0, 0); eg.clearRect(0, 0, W, H);
+  const s1 = ST(1), s2 = ST(2), s3 = ST(3), s4 = ST(4), s5 = ST(5), d = DUR();
+  { const vg = g.createRadialGradient(CX, 760, 40, CX, 760, 950); vg.addColorStop(0, 'rgba(70,52,26,.32)'); vg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
+
+  /* ===== 급여명세서 카드 (S0~S3 동안 계속, 아래로 길어짐) ===== */
+  const cardOut = E.in3(prog(t, s4 - .2, .5));
+  if (t < s4 + .4) {
+    const cin = spring(t, .05, 1.8, .7);
+    const cam = .04 * prog(t, 0, s4) + .015 * Math.sin(t * .6);
+    const extra = 0;
+    // 카드 길이: 줄이 추가될수록 길어짐
+    const rowsShown = ROWS.filter((_, i) => t > s1 + .15 + i * .3).length;
+    const retOn = t > s2 + .1 ? 1 : 0;
+    const targetH = 380 + rowsShown * 80 + retOn * 110 + (t > s3 ? 150 : 0);
+    const ch = lerp(380, targetH, 1);
+    const cw = 820, cx = CX - cw / 2, cy = 230 + (1 - cin) * 400 - cardOut * 200;
+    g.save(); g.globalAlpha = clamp(cin * 1.5) * (1 - cardOut); g.translate(CX, 900); g.scale(1 + cam, 1 + cam); g.translate(-CX, -900);
+    rr(g, cx, cy, cw, ch, 26); g.fillStyle = 'rgba(239,233,221,.045)'; g.fill(); g.strokeStyle = rg(C.gold, .7); g.lineWidth = 2.5; g.stroke();
+    text(g, '급여명세서', cx + 48, cy + 74, '800 38px P', C.bone, 'left', '0px');
+    text(g, '2026 · 직원 1명', cx + cw - 48, cy + 74, '600 28px M', C.dim, 'right', '1px');
+    g.fillStyle = rg(C.gold, .35); g.fillRect(cx + 48, cy + 104, cw - 96, 1.5);
+    text(g, '월급', cx + 48, cy + 180, '700 36px P', C.dim, 'left', '0px');
+    const big = E.out5(prog(t, .35, .55));
+    g.save(); g.beginPath(); g.rect(cx, cy + 190, cw, 150); g.clip();
+    text(g, '2,500,000', cx + 48, cy + 310 + (1 - big) * 140, '800 128px M', C.bone, 'left', '-6px'); text(g, '원', cx + cw - 48, cy + 310 + (1 - big) * 140, '800 56px P', C.dim, 'right', '0px'); g.restore();
+    // 훅: '실제로는?' 빨간 손글씨 대신 금색 선택 박스 + 화살표
+    const q = E.out3(prog(t, 1.4, .5)) * (1 - prog(t, s1 - .1, .3));
+    if (q > 0) { g.save(); g.globalAlpha = q; g.strokeStyle = C.goldH; g.lineWidth = 3; g.strokeRect(cx + 34, cy + 196, (cw - 68) * q, 140);
+      text(g, '사장님이 실제로 내는 돈은?', CX, cy + 420, '800 46px P', C.goldH, 'center', '-1px'); g.restore(); }
+    // 4대보험 줄
+    let y = cy + 380;
+    ROWS.forEach(([n, r, v], i) => {
+      const p = spring(t, s1 + .15 + i * .3, 2.6, .65); if (p <= 0) return;
+      g.save(); g.globalAlpha = clamp(p * 1.6); const yy = y + i * 80 + 56 + (1 - clamp(p)) * 40;
+      text(g, '+ ' + n, cx + 48, yy, '700 40px P', C.bone, 'left', '0px'); g.globalAlpha = clamp(p * 1.6) * (1 - .8 * E.out3(prog(t, s1 + 1.7, .3))); text(g, r, cx + 470, yy, '600 34px M', C.dim, 'right', '0px'); g.globalAlpha = clamp(p * 1.6);
+      text(g, won(v * clamp(p)), cx + cw - 48, yy, '700 40px M', C.goldH, 'right', '-1px'); g.restore();
+    });
+    // 합계 브래킷 ≈ 10%
+    const br = E.out3(prog(t, s1 + 1.5, .45));
+    if (br > 0 && rowsShown) { const y0 = y + 20, y1 = y + rowsShown * 80 + 10; g.save(); g.globalAlpha = br; g.strokeStyle = C.goldH; g.lineWidth = 3; g.beginPath(); g.moveTo(cx + cw + 6, y0); g.lineTo(cx + cw + 26, y0); g.lineTo(cx + cw + 26, y0 + (y1 - y0) * br); g.lineTo(cx + cw + 6, y0 + (y1 - y0) * br); g.stroke(); g.restore();
+      const tag = spring(t, s1 + 1.8, 2.6, .55); if (tag > 0) { g.save(); g.translate(cx + 470, (y0 + y1) / 2); g.rotate(-.06); g.scale(clamp(tag), clamp(tag)); rr(g, -120, -46, 240, 92, 46); g.fillStyle = C.goldH; g.fill(); text(g, '약 10%', 0, 18, '900 48px P', C.ink, 'center', '-1px'); g.restore(); } }
+    y += rowsShown * 80;
+    // 퇴직금 1/12: 12칸이 하나씩
+    if (t > s2) {
+      const p = E.out3(prog(t, s2 + .1, .4));
+      g.save(); g.globalAlpha = p; text(g, '+ 퇴직금 적립', cx + 48, y + 70, '700 40px P', C.bone, 'left', '0px'); text(g, won(RET), cx + cw - 48, y + 70, '700 40px M', C.goldH, 'right', '-1px');
+      for (let k = 0; k < 12; k++) { const f = prog(t, s2 + .5 + k * ((d[2] - 1.0) / 12), .12); const bx = cx + 48 + k * 60, by = y + 96; rr(g, bx, by, 48, 22, 6); g.fillStyle = f > 0 ? rg(C.gold, .25 + .75 * f) : 'rgba(239,233,221,.08)'; g.fill(); }
+      text(g, '매달 월급의 1/12', cx + cw - 48, y + 116, '600 26px P', C.dim, 'right', '0px'); g.restore();
+      y += 110;
+    }
+    // 합계 카운트업 (S3)
+    if (t > s3 - .1) {
+      const p = E.inOut3(prog(t, s3 + .1, d[3] - .7)), tot = 2500000 + (INS + RET) * p;
+      g.fillStyle = rg(C.gold, .5); g.fillRect(cx + 48, y + 24, (cw - 96) * E.out3(prog(t, s3, .3)), 2);
+      text(g, '실제 비용', cx + 48, y + 92, '800 40px P', C.goldH, 'left', '0px');
+      text(g, won(tot), cx + cw - 48, y + 112, '900 84px M', C.goldH, 'right', '-4px');
+    }
+    g.restore();
+  }
+
+  /* ===== S4 반전: 명세서가 접히며 시계가 됨 — 매일 반복되는 일 칩이 쌓임 (s4 ~ s5) ===== */
+  if (t >= s4 && t < s5 + .5) {
+    const lt = t - s4, out = E.in3(prog(t, s5 + .05, .4));
+    const ci = E.out5(prog(lt, 0, .6)), R = 230 * ci, ccy = 640;
+    eg.save(); eg.globalAlpha = 1 - out; eg.strokeStyle = C.goldH; eg.lineWidth = 6; eg.beginPath(); eg.arc(CX, ccy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * ci); eg.stroke();
+    for (let k = 0; k < 12; k++) { const a = k / 12 * Math.PI * 2; eg.fillStyle = rg(C.gold, .8 * ci); eg.fillRect(CX + Math.cos(a) * (R - 26) - 3, ccy + Math.sin(a) * (R - 26) - 3, 6, 6); }
+    const ha = -Math.PI / 2 + lt * 5.5, ma = -Math.PI / 2 + lt * 0.46;
+    eg.lineCap = 'round'; eg.lineWidth = 8; eg.beginPath(); eg.moveTo(CX, ccy); eg.lineTo(CX + Math.cos(ha) * R * .78, ccy + Math.sin(ha) * R * .78); eg.stroke();
+    eg.lineWidth = 12; eg.beginPath(); eg.moveTo(CX, ccy); eg.lineTo(CX + Math.cos(ma) * R * .5, ccy + Math.sin(ma) * R * .5); eg.stroke();
+    if (ci > 0) { eg.fillStyle = C.goldH; eg.beginPath(); eg.arc(CX, ccy, 14 * ci, 0, 7); eg.fill(); } eg.restore();
+    const chips = ['엑셀 복붙', '문의 답장', '재고 정리', '예약 확인', '리뷰 답글', '견적서 작성'];
+    chips.forEach((c, i) => {
+      const p = spring(lt, .5 + i * .32, 2.6, .6); if (p <= 0) return;
+      const col = i % 2, row = Math.floor(i / 2), x = col ? CX + 20 : CX - 380, yy = 960 + row * 110;
+      g.save(); g.globalAlpha = clamp(p * 1.6) * (1 - out); g.translate(x + 180, yy + 40); g.scale(lerp(.8, 1, clamp(p)), lerp(.8, 1, clamp(p)));
+      rr(g, -180, -40, 360, 80, 40); g.fillStyle = 'rgba(239,233,221,.06)'; g.fill(); g.strokeStyle = rg(C.gold, .55); g.lineWidth = 2; g.stroke();
+      text(g, c, 0, 14, '800 38px P', C.bone, 'center', '-1px');
+      if (lt > .9 + i * .32) text(g, '매일', 150, -50, '700 26px P', C.goldH, 'right', '0px');
+      g.restore();
+    });
+    const hl = E.out5(prog(lt, .2, .5)) * (1 - out);
+    if (hl > 0) { g.save(); g.beginPath(); g.rect(0, 220, W, 150); g.clip(); text(g, '진짜 비싼 건', CX, 330 + (1 - hl) * 140, '900 100px P', C.bone, 'center', '-3px'); g.restore(); }
+  }
+
+  /* ===== S5 CTA (s5 ~ end) ===== */
+  if (t >= s5) {
+    const lt = t - s5;
+    const l1 = E.out5(prog(lt, .1, .55)), l2 = E.out5(prog(lt, .25, .55));
+    g.save(); g.beginPath(); g.rect(0, 420, W, 150); g.clip(); text(g, '반복 업무부터', CX, 530 + (1 - l1) * 150, '900 112px P', C.bone, 'center', '-3px'); g.restore();
+    g.save(); g.beginPath(); g.rect(0, 580, W, 150); g.clip(); text(g, '줄여 보세요', CX, 690 + (1 - l2) * 150, '900 112px P', C.goldH, 'center', '-3px'); g.restore();
+    const pg = spring(lt, .7, 2, .62), press = Math.sin(Math.PI * prog(lt, 1.9, .22));
+    const pw = lerp(140, 800, pg), ph = 146, px = CX - pw / 2, py = 930;
+    g.save(); g.globalAlpha = clamp(pg * 2); g.translate(CX, py + ph / 2); g.scale(1 - .05 * press, 1 - .05 * press); g.translate(-CX, -(py + ph / 2));
+    rr(g, px, py, pw, ph, 73); g.fillStyle = C.goldH; g.fill(); g.clip(); g.textBaseline = 'middle';
+    text(g, '상담 신청하기', CX, py + ph / 2 + (1 - E.out5(prog(lt, .9, .45))) * ph, '900 60px P', C.ink, 'center', '-1px'); g.restore(); g.textBaseline = 'alphabetic';
+    const sub = E.out3(prog(lt, 1.3, .5)); g.globalAlpha = sub; text(g, '프로필 링크 · venturecraft.kr', CX, 1150, '700 38px P', C.dim, 'center', '0px'); g.globalAlpha = 1;
+    const ci = spring(lt, 1.2, 1.6, .75); const cx = lerp(1150, 720, ci), cy = lerp(1500, 1020, ci);
+    g.save(); g.translate(cx, cy); g.scale(1 - .18 * press, 1 - .18 * press); g.fillStyle = '#fff'; g.strokeStyle = '#000'; g.lineWidth = 4; g.beginPath(); g.moveTo(0, 0); g.lineTo(0, 62); g.lineTo(15, 48); g.lineTo(26, 72); g.lineTo(37, 67); g.lineTo(26, 44); g.lineTo(46, 44); g.closePath(); g.fill(); g.stroke(); g.restore();
+    const rp = prog(lt, 2.05, .6); if (rp > 0 && rp < 1) { g.strokeStyle = `rgba(242,196,110,${1 - rp})`; g.lineWidth = 4; g.beginPath(); g.arc(720, 1003, 40 + 120 * E.out3(rp), 0, 7); g.stroke(); }
+  }
+
+  g.setTransform(1, 0, 0, 1, 0, 0); const chm = clamp(t / .5); g.globalAlpha = .5 * chm; g.fillStyle = C.bone;
+  [[46, 46, 1, 1], [W - 46, 46, -1, 1], [46, H - 46, 1, -1], [W - 46, H - 46, -1, -1]].forEach(([x, y, dx, dy]) => { g.fillRect(dx > 0 ? x : x - 32, y - 1.5, 32, 3); g.fillRect(x - 1.5, dy > 0 ? y : y - 32, 3, 32); });
+  text(g, 'VENTURECRAFT', 70, 92, '700 24px M', C.bone, 'left', '4px'); text(g, '사장님 돈 계산 / 01', W - 70, 92, '600 22px P', C.bone, 'right', '1px'); g.globalAlpha = 1;
+  bloom(g, em, { k1: .75, k2: .6, k3: .5 });
+  if (window.SPEC) { const a = K.at(window.SPEC, t); if (a && a.cap) K.caption(g, a.cap, a.capT); }
+  grain(g, t, .055);
+};
+window.addEventListener('load', async () => {
+  await Promise.all(['900 100px P', '800 100px P', '700 100px P', '600 100px P', '800 100px M', '600 20px M'].map((f) => document.fonts.load(f)));
+  window.seek(0); window.ready = true;
+});
+</script></body></html>
